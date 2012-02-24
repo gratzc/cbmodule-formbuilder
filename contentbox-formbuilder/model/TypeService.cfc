@@ -12,13 +12,13 @@ component singleton{
 
 	query function getTypes() {
 		var query = QueryHelperPlugin.querySim("
-			typeID,typeName,showOptions
-			1|Text|false
-			2|Text Area|false
-			3|Select|true
-			4|CheckBox|false
-			5|Radio|true
-			6|CheckBox Group|true
+			typeID,typeName,showOptions,view
+			1|Text|false|text
+			2|Text Area|false|textarea
+			3|Select|true|select
+			4|CheckBox|false|checkbox
+			5|Radio|true|radio
+			6|CheckBox Group|true|checkboxgroup
 		");
 		return query;
 	}
@@ -27,6 +27,12 @@ component singleton{
 		var types = getTypes();
 		var qry = QueryHelperPlugin.filterQuery(types,"typeID",typeID,"CF_SQL_NUMERIC");
 		return qry.typeName;
+	}
+
+	function getViewByTypeID(required numeric typeID) {
+		var types = getTypes();
+		var qry = QueryHelperPlugin.filterQuery(types,"typeID",typeID,"CF_SQL_NUMERIC");
+		return qry.view;
 	}
 
 	function getShowOptionByTypeID(required numeric typeID) {

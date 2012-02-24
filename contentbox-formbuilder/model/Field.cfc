@@ -45,6 +45,13 @@ component persistent="true" table="cb_formField"{
 		return TypeService.getNameByTypeID( getTypeID() );
 	}
 
+	/**
+	* get the type view
+	*/
+	function getTypeView(){
+		return TypeService.getViewByTypeID( getTypeID() );
+	}
+
 	/*
 	* Validate entry, returns an array of error or no messages
 	*/
