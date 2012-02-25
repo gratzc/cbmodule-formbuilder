@@ -66,6 +66,7 @@ component {
 
 		//Mappings
 		binder.map("TypeService@cbFormBuilder").to("#moduleMapping#.model.TypeService");
+		binder.map("FormSubmissionService@cbFormBuilder").to("#moduleMapping#.model.FormSubmissionService");
 
 	}
 }

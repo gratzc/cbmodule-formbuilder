@@ -4,10 +4,11 @@
 component{
 
 	// Dependencies
-	property name="formService"		inject="entityService:Form";
-	property name="fieldService"	inject="entityService:Field";
-	property name="optionService"	inject="entityService:FieldOption";
-	property name="TypeService"		inject="id:TypeService@cbFormBuilder";
+	property name="formService"					inject="entityService:Form";
+	property name="fieldService"				inject="entityService:Field";
+	property name="optionService"				inject="entityService:FieldOption";
+	property name="TypeService"					inject="id:TypeService@cbFormBuilder";
+	property name="FormSubmissionService"		inject="id:FormSubmissionService@cbFormBuilder";
 
 		// pre handler
 	function preHandler(event,action,eventArguments){
