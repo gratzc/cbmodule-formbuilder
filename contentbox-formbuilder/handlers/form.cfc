@@ -6,6 +6,7 @@ component extends="base" {
 	function index(event,rc,prc){
 		//exit points
 		prc.xehFormRemove = "cbFormBuilder.form.remove";
+		prc.xehSubmissionReport = "cbFormBuilder.form.submissionReport";
 
 		//current forms
 		prc.forms = formService.list(sortOrder="createdDate DESC",asQuery=false);
@@ -50,6 +51,11 @@ component extends="base" {
 		if (!len(oForm.getCreatedDate())) {
 			oForm.setCreatedDate(now());
 		}
+
+		if ( !event.valueExists("useCAPTCHA") ) {
+			oField.setUseCAPTCHA(false);
+		}
+
 
 		// validate it
 		var errors = oForm.validate();
@@ -118,9 +124,17 @@ component extends="base" {
 			oSubmission.setForm(oForm);
 			oSubmission.setSubmissionDate(now());
 			formSubmissionService.save(oSubmission);
-			getPlugin("MessageBox").setMessage("info",oForm.getSubmitMessage());
+			//getPlugin("MessageBox").setMessage("info",oForm.getSubmitMessage());
+			prc.formData = deserializeJSON(oSubmission.getFormData());
+			return renderView(view="viewlets/renderSubmission",module="contentbox-formbuilder");
 		}
-		setNextEvent(url=rc._returnTo);
+		//setNextEvent(url=rc._returnTo);
+	}
+
+	function submissionReport(event,rc,prc) {
+		var oForm = formService.get( rc.formID );
+		prc.submissions = oForm.getSubmissions();
+		event.setView("form/report");
 	}
 
 }

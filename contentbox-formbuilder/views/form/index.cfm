@@ -56,6 +56,7 @@
 						<th>Form</th>
 						<th>Slug</th>
 						<th>Create Date</th>
+						<th width="85">Submissions</th>
 						<th width="75" class="center {sorter:false}">Actions</th>
 					</tr>
 				</thead>
@@ -66,6 +67,7 @@
 							   title="Edit #myForm.getName()#">#myForm.getName()#</a></td>
 						<td>#myForm.getSlug()#</td>
 						<td>#dateFormat(myForm.getCreatedDate(),"short")# #timeFormat(myForm.getCreatedDate(),"short")#</td>
+						<td><a href="#event.buildLink(prc.xehSubmissionReport)#/formID/#myForm.getFormID()#">#myForm.getNumberOfSubmissions()#</a></td>
 						<td class="center">
 							<!--- Edit Command --->
 							<a href="#event.buildLink(prc.xehFormEditor)#/formID/#myForm.getFormID()#"
