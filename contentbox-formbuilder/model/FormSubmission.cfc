@@ -12,11 +12,12 @@ component persistent="true" table="cb_formSubmission"{
 	property name="submissionDate" notnull="true" ormtype="timestamp" update="false" index="idx_submissionDate";
 
 	// M20 -> Form
-	property name="form" notnull="true" cfc="contentbox-root.modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
+	property name="form" notnull="true" cfc="contentbox-modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
 
 	//DI
 	property name="mailService"		inject="coldbox:plugin:MailService" persistent="false";
-	property name="settingService"	inject="id:settingService@cb" persistent="false" ;
+	property name="settingService"	inject="id:settingService@cb" persistent="false";
+	property name="renderer"		inject="coldbox:plugin:Renderer" persistent="false";
 
 	// Constructor
 	function init(){
@@ -27,7 +28,7 @@ component persistent="true" table="cb_formSubmission"{
 	/**
 	* Send a submission email for the form
 	*/
-	private void function sendSubmissionEmails(){
+	public void function sendSubmissionEmails(){
 		//if they was an email to set for the form then we need to send it
 		if (!isNull(getForm().getEmailTo())) {
 			//set some settings
@@ -50,7 +51,7 @@ component persistent="true" table="cb_formSubmission"{
 										   useTLS=settings.cb_site_mail_tls,
 										   useSSL=settings.cb_site_mail_ssl);
 			// generate content for email from template
-			//mail.setBody( renderer.renderView(view="email_templates/#template#",module="contentbox") );
+			mail.setBody( renderer.renderView(view="viewlets/renderSubmission",module="contentbox-formbuilder") );
 			// send it out
 			mailService.send( mail );
 		}

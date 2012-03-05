@@ -6,7 +6,6 @@ component extends="base" {
 	function index(event,rc,prc){
 		//exit points
 		prc.xehFormRemove = "cbFormBuilder.form.remove";
-		prc.xehSubmissionReport = "cbFormBuilder.form.submissionReport";
 
 		//current forms
 		prc.forms = formService.list(sortOrder="createdDate DESC",asQuery=false);
@@ -106,35 +105,27 @@ component extends="base" {
 		return renderview(view="viewlets/fields",module="contentbox-formbuilder");
 	}
 
-	function renderForm(event,rc,prc,slug) {
-		prc.form = formService.findWhere({slug=arguments.slug});
-		prc.xehformsubmit = "cbFormBuilder.form.submitForm";
-		return renderview(view="viewlets/render",module="contentbox-formbuilder");
-	}
-
-	function submitForm(event,rc,prc) {
-		var errors = formSubmissionService.validateSubmission(event,rc,prc);
-		if (arrayLen(errors)) {
-			getPlugin("MessageBox").setMessage("warning","There was a problem submitting your form!");
-		} else {
-			var oForm = formService.get( rc.formID );
-			var oSubmission = formSubmissionService.new();
-			oSubmission.setSubmissionIP(cgi.REMOTE_ADDR);
-			oSubmission.setFormData(serializeJSON(form));
-			oSubmission.setForm(oForm);
-			oSubmission.setSubmissionDate(now());
-			formSubmissionService.save(oSubmission);
-			//getPlugin("MessageBox").setMessage("info",oForm.getSubmitMessage());
-			prc.formData = deserializeJSON(oSubmission.getFormData());
-			return renderView(view="viewlets/renderSubmission",module="contentbox-formbuilder");
-		}
-		//setNextEvent(url=rc._returnTo);
-	}
-
 	function submissionReport(event,rc,prc) {
-		var oForm = formService.get( rc.formID );
-		prc.submissions = oForm.getSubmissions();
+		rc.Form = formService.get( rc.formID );
+		prc.submissions = rc.Form.getSubmissions();
+		//exit points
+		prc.xehFormSubmissionRemove = 'cbFormBuilder.form.removeSubmission';
 		event.setView("form/report");
+	}
+
+	function removeSubmission(event,rc,prc) {
+		var oSubmission	= formSubmissionService.get( rc.formSubmissionID );
+
+		if( isNull(oSubmission) ){
+			getPlugin("MessageBox").setMessage("warning","Invalid Submission detected!");
+			setNextEvent( prc.xehSubmissionReport,"formID=#rc.formID#" );
+		}
+		// remove
+		formService.delete( oSubmission );
+		// message
+		getPlugin("MessageBox").setMessage("info","Submission Removed!");
+		// redirect
+		setNextEvent(prc.xehSubmissionReport,"formID=#rc.formID#");
 	}
 
 }

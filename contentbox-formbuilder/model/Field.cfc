@@ -15,11 +15,11 @@ component persistent="true" table="cb_formField"{
 	property name="defaultValue" notnull="true" length="2000" default="" index="idx_defaultValue";
 
 	// M20 -> Form
-	property name="form" notnull="true" cfc="contentbox-root.modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
+	property name="form" notnull="true" cfc="contentbox-modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
 
 	// O2M -> FieldOptions
 	property name="fieldOptions" singularName="fieldOption" fieldtype="one-to-many" type="array" lazy="extra" batchsize="25" orderby="order"
-			  cfc="contentbox-root.modules.contentbox-formbuilder.model.FieldOption" fkcolumn="FK_fieldID" inverse="true" cascade="all-delete-orphan";
+			  cfc="contentbox-modules.contentbox-formbuilder.model.FieldOption" fkcolumn="FK_fieldID" inverse="true" cascade="all-delete-orphan";
 
 	//DI
 	property name="TypeService"		inject="id:TypeService@cbFormBuilder" persistent=false;

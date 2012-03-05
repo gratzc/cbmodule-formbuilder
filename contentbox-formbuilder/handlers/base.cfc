@@ -22,6 +22,7 @@ component{
 		prc.xehFields = "cbFormBuilder.field.index";
 		prc.xehFieldOptionEditor = "cbFormBuilder.option.editor";
 		prc.xehFieldForm = "contentbox-formbuilder:field.form";
+		prc.xehSubmissionReport = "cbFormBuilder.form.submissionReport";
 
 
 		//use the CB admin layout
