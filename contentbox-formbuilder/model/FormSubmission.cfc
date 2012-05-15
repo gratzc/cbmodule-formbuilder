@@ -12,7 +12,7 @@ component persistent="true" table="cb_formSubmission"{
 	property name="submissionDate" notnull="true" ormtype="timestamp" update="false" index="idx_submissionDate";
 
 	// M20 -> Form
-	property name="form" notnull="true" cfc="contentbox-modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
+	property name="form" notnull="true" cfc="contentbox.modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
 
 	//DI
 	property name="mailService"		inject="coldbox:plugin:MailService" persistent="false";

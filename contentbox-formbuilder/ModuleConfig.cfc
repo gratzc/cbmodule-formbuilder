@@ -64,9 +64,42 @@ component {
 			{pattern="/:handler/:action?"}
 		];
 
+		// Interceptors
+		interceptors = [
+			{ class="#moduleMapping#.interceptors.CBFRequest", properties={ entryPoint="cbadmin" }, name="CBFRequest@cbFormBuilder" }
+		];
+
 		//Mappings
 		binder.map("TypeService@cbFormBuilder").to("#moduleMapping#.model.TypeService");
 		binder.map("FormSubmissionService@cbFormBuilder").to("#moduleMapping#.model.FormSubmissionService");
 
 	}
+
+	/**
+	* Fired when the module is registered and activated.
+	*/
+	function onLoad(){
+
+		// ContentBox loading
+		if( structKeyExists( controller.getSetting("modules"), "contentbox" ) ){
+			// Let's add ourselves to the main menu in the Modules section
+			var menuService = controller.getWireBox().getInstance("AdminMenuService@cb");
+			// Add Menu Contribution
+			menuService.addSubMenu(topMenu=menuService.MODULES,name="cbFormBuilder",label="Form Builder",href="#menuService.buildModuleLink('cbFormBuilder','form.index')#");
+		}
+	}
+
+	/**
+	* Fired when the module is unregistered and unloaded
+	*/
+	function onUnload(){
+		// ContentBox unloading
+		if( structKeyExists( controller.getSetting("modules"), "contentbox" ) ){
+			// Let's remove ourselves to the main menu in the Modules section
+			var menuService = controller.getWireBox().getInstance("AdminMenuService@cb");
+			// Remove Menu Contribution
+			menuService.removeSubMenu(topMenu=menuService.MODULES,name="cbFormBuilder");
+		}
+	}
+
 }

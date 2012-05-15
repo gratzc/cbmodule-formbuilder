@@ -17,11 +17,11 @@ component persistent="true" table="cb_form"{
 
 	// O2M -> Fields
 	property name="fields" singularName="field" fieldtype="one-to-many" type="array" lazy="extra" batchsize="25" orderby="fieldOrder"
-			  cfc="contentbox-modules.contentbox-formbuilder.model.Field" fkcolumn="FK_formID" inverse="true" cascade="all-delete-orphan";
+			  cfc="contentbox.modules.contentbox-formbuilder.model.Field" fkcolumn="FK_formID" inverse="true" cascade="all-delete-orphan";
 
 	// O2M -> Submissions
 	property name="submissions" singularName="submission" fieldtype="one-to-many" type="array" lazy="extra" batchsize="25" orderby="submissionDate DESC"
-			  cfc="contentbox-modules.contentbox-formbuilder.model.FormSubmission" fkcolumn="FK_formID" inverse="true" cascade="all-delete-orphan";
+			  cfc="contentbox.modules.contentbox-formbuilder.model.FormSubmission" fkcolumn="FK_formID" inverse="true" cascade="all-delete-orphan";
 
 	//Calculated Fields
 	property name="numberOfSubmissions" formula="select count(*) from cb_formSubmission fs where fs.FK_formID=formID" default="0";

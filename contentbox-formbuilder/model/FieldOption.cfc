@@ -13,7 +13,7 @@ component persistent="true" table="cb_formFieldOption"{
 
 
 	// M20 -> Form
-	property name="field" notnull="true" cfc="contentbox-modules.contentbox-formbuilder.model.Field" fieldtype="many-to-one" fkcolumn="FK_fieldID" lazy="true" fetch="join";
+	property name="field" notnull="true" cfc="contentbox.modules.contentbox-formbuilder.model.Field" fieldtype="many-to-one" fkcolumn="FK_fieldID" lazy="true" fetch="join";
 
 	// Constructor
 	function init(){
