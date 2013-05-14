@@ -45,7 +45,7 @@
 				<a href="#event.buildLink(prc.xehFieldOptionEditor)#/optionID/#option.getFieldOptionID()#"
 				   title="Edit #option.getDisplayValue()#"><img src="#prc.cbroot#/includes/images/edit.png" alt="edit" border="0" /></a>
 				<!--- Delete Command --->
-				<a title="Delete Option" href="javascript:removeOption('#option.getFieldOptionID()#')" class="confirmIt" data-title="Delete Field?"><img id="delete_#option.getFieldOptionID()#" src="#prc.cbroot#/includes/images/delete.png" border="0" alt="delete"/></a>
+				<a title="Delete Option" href="javascript:removeOption('#option.getFieldOptionID()#')" class="confirmIt" data-title="Delete Option?"><img id="delete_#option.getFieldOptionID()#" src="#prc.cbroot#/includes/images/delete.png" border="0" alt="delete"/></a>
 			</td>
 		</tr>
 		</cfloop>

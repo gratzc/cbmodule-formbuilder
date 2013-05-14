@@ -2,7 +2,7 @@
 <!--============================ Sidebar ============================-->
 <div class="sidebar">
 	<!--- Info Box --->
-	<div class="small_box">
+	<!---<div class="small_box">
 		<div class="header">
 			<img src="#prc.cbroot#/includes/images/settings.png" alt="info" width="24" height="24" />Form Actions
 		</div>
@@ -11,25 +11,30 @@
 			<p class="center">
 				<button class="button" onclick="return to('#event.buildLink(prc.xehFormEditor)#/formID/#prc.field.getForm().getFormID()#/##fields')"> <img src="#prc.cbroot#/includes/images/go-back.png" alt="Back"/> Back To #prc.field.getForm().getName()#</button>
 			</p>
-			<cfif prc.field.isLoaded()>
+			<!---<cfif prc.field.isLoaded()>
 			<!--- Create Form --->
 			<p class="center">
 				<!--- typeForm --->
-				#html.select(label="Type:",name="typeID",options=prc.types,column="typeID",nameColumn="typeName",class="inline")#
+				<label for="typeID" style="margin: 5px; font-weight: bold;">Type:</label>
+				#html.select(name="typeID",options=prc.types,column="typeID",nameColumn="typeName",class="inline")#
 				<button class="button2" onclick="toFieldForm(); return false;" title="Create new field">Create Field</button>
 			</p>
-			</cfif>
+			</cfif>--->
 		</div>
-	</div>
+	</div>--->
+
+	<cfinclude template="../sidebar/actions.cfm" >
+	<cfinclude template="../sidebar/help.cfm" >
+	<cfinclude template="../sidebar/about.cfm" >
 </div>
-<!--End sidebar-->
+
 <!--============================Main Column============================-->
 <div class="main_column">
 	<div class="box">
 		<!--- Body Header --->
 		<div class="header">
 			<img src="#prc.cbroot#/includes/images/forms_icon.png" alt="sofa" width="30" height="30" />
-			<cfif prc.field.isLoaded()>Editing #prc.field.getName()#<cfelse>Create Field</cfif>
+			<cfif prc.field.isLoaded()>Editing "#prc.field.getName()#"<cfelse>Create Field</cfif>
 		</div>
 		<!--- Body --->
 		<div class="body">
@@ -68,7 +73,7 @@
 								#html.textField(name="cssClass",bind=prc.field,label="CSS Class:",size="50",class="textfield",title="The CSS Class(s) for this field, used to style the form, if you don't know what this is kindly leave it blank")#
 
 								<div class="actionBar">
-									<button class="button" onclick="return to('#event.buildLink(prc.xehFormEditor)#/formID/#prc.field.getForm().getFormID()#')">Cancel</button> or
+									<button class="button" onclick="return to('#event.buildLink(prc.xehFormEditor)#/formID/#prc.field.getForm().getFormID()#')">Cancel</button>
 									<input type="submit" value="Save" class="buttonred">
 								</div>
 								#html.endFieldSet()#

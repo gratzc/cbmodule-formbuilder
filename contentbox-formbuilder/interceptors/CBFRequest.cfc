@@ -7,6 +7,6 @@ component extends="contentbox-admin.interceptors.cbRequest" {
 
 	void function preProcess(event,struct interceptData) eventPattern="^contentbox-formbuilder"{
 		super.preProcess(event,interceptData);
-	}
+	}
 
 }

@@ -1,5 +1,5 @@
 /**
-* A cool Field entity
+* Field entity
 */
 component persistent="true" table="cb_formField"{
 
@@ -7,14 +7,18 @@ component persistent="true" table="cb_formField"{
 	property name="fieldID" fieldtype="id" column="fieldID" generator="identity" setter="false";
 
 	// Properties
-	property name="fieldOrder" notnull="false" ormtype="integer" default="0" dbdefault="0";	property name="name" notnull="true" length="200" default="" index="idx_name";
-	property name="label" notnull="true" length="200" default="" index="idx_label";	property name="typeID" notnull="false" ormtype="integer" default="0" dbdefault="0";
-	property name="isRequired" notnull="true" ormtype="boolean" default="true" dbdefault="1" index="idx_isRequired";	property name="maxLength" notnull="false" ormtype="integer" default="50" dbdefault="50";
-	property name="helpText" notnull="false" length="2000" default="";	property name="cssID" notnull="false" length="250" default="";
+	property name="fieldOrder" notnull="false" ormtype="integer" default="0" dbdefault="0";
+	property name="name" notnull="true" length="200" default="" index="idx_name";
+	property name="label" notnull="true" length="200" default="" index="idx_label";
+	property name="typeID" notnull="false" ormtype="integer" default="0" dbdefault="0";
+	property name="isRequired" notnull="true" ormtype="boolean" default="true" dbdefault="1" index="idx_isRequired";
+	property name="maxLength" notnull="false" ormtype="integer" default="50" dbdefault="50";
+	property name="helpText" notnull="false" length="2000" default="";
+	property name="cssID" notnull="false" length="250" default="";
 	property name="cssClass" notnull="false" length="250" default="";
 	property name="defaultValue" notnull="true" length="2000" default="" index="idx_defaultValue";
 
-	// M20 -> Form
+	// M2O -> Form
 	property name="form" notnull="true" cfc="contentbox.modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
 
 	// O2M -> FieldOptions

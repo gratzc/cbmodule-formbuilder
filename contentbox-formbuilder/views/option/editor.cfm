@@ -1,18 +1,9 @@
 ﻿<cfoutput>
 <!--============================ Sidebar ============================-->
 <div class="sidebar">
-	<!--- Info Box --->
-	<div class="small_box">
-		<div class="header">
-			<img src="#prc.cbroot#/includes/images/settings.png" alt="info" width="24" height="24" />Form Actions
-		</div>
-		<div class="body">
-			<!--- Back button --->
-			<p class="center">
-				<button class="button" onclick="return to('#event.buildLink(prc.xehFieldEditor)#/fieldID/#prc.option.getField().getFieldID()#/##options')"> <img src="#prc.cbroot#/includes/images/go-back.png" alt="Back"/> Back To #prc.option.getField().getName()#</button>
-			</p>
-		</div>
-	</div>
+	<cfinclude template="../sidebar/actions.cfm" >
+	<cfinclude template="../sidebar/help.cfm" >
+	<cfinclude template="../sidebar/about.cfm" >
 </div>
 <!--End sidebar-->
 <!--============================Main Column============================-->
@@ -21,7 +12,7 @@
 		<!--- Body Header --->
 		<div class="header">
 			<img src="#prc.cbroot#/includes/images/forms_icon.png" alt="sofa" width="30" height="30" />
-			<cfif prc.option.isLoaded()>Editing #prc.option.getDisplayValue()#<cfelse>Create Option</cfif>
+			<cfif prc.option.isLoaded()>Editing "#prc.option.getDisplayValue()#"<cfelse>Create Option</cfif>
 		</div>
 		<!--- Body --->
 		<div class="body">
@@ -38,7 +29,7 @@
 					<div class="panes_vertical">
 						<!--- Option Details --->
 						<div>
-							#html.startForm(name="optionform",action=prc.xehOptionsave,novalidate="novalidate")#
+							#html.startForm(name="optionform",action=prc.xehOptionSave,novalidate="novalidate")#
 								#html.startFieldSet(legend="Option Details")#
 								#html.hiddenField(name="fieldOptionID",bind=prc.option)#
 								#html.hiddenField(name="fieldID",value=prc.option.getField().getFieldID())#
@@ -49,7 +40,7 @@
 								#html.checkbox(name="isChecked",bind=prc.option,label="Checked/Selected:",class="checkbox",title="Should this option be selected/checked by default")#
 
 								<div class="actionBar">
-									<button class="button" onclick="return to('#event.buildLink(prc.xehFieldEditor)#/fieldID/#prc.option.getField().getFieldID()#/##options')">Cancel</button> or
+									<button class="button" onclick="return to('#event.buildLink(prc.xehFieldEditor)#/fieldID/#prc.option.getField().getFieldID()#/##options')">Cancel</button>
 									<input type="submit" value="Save" class="buttonred">
 								</div>
 								#html.endFieldSet()#

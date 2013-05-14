@@ -1,11 +1,10 @@
 ﻿<cfoutput>
-	#html.checkbox(
-		id=field.getCSSID(),
+	#prc.html.checkBox(
 		name=field.getName(),
+		label=field.getLabel(),
+		required=field.getIsRequired(),
 		value=field.getDefaultValue(),
-		label=Field.getLabel(),
-		required=Field.getIsRequired(),
-		size=Field.getMaxLength,
-		class=Field.getCSSClass()
+		id=field.getCSSID(),
+		class=field.getCSSClass()
 	)#
 </cfoutput>

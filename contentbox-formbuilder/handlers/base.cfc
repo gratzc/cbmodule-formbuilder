@@ -3,19 +3,19 @@
 */
 component{
 
-	// Dependencies
+	// dependencies
 	property name="formService"					inject="entityService:Form";
 	property name="fieldService"				inject="entityService:Field";
 	property name="optionService"				inject="entityService:FieldOption";
 	property name="TypeService"					inject="id:TypeService@cbFormBuilder";
 	property name="FormSubmissionService"		inject="id:FormSubmissionService@cbFormBuilder";
 
-		// pre handler
+	// pre handler
 	function preHandler(event,action,eventArguments){
 		var rc 	= event.getCollection();
 		var prc = event.getCollection(private=true);
 
-		// Exit Points
+		// exit points
 		prc.xehForms = "cbFormBuilder.form.index";
 		prc.xehFormEditor = "cbFormBuilder.form.editor";
 		prc.xehFieldEditor = "cbFormBuilder.field.editor";
@@ -23,10 +23,14 @@ component{
 		prc.xehFieldOptionEditor = "cbFormBuilder.option.editor";
 		prc.xehFieldForm = "contentbox-formbuilder:field.form";
 		prc.xehSubmissionReport = "cbFormBuilder.form.submissionReport";
+		prc.xehFormSettings = "cbFormBuilder.settings.index";
 
-
-		//use the CB admin layout
+		// use the CB admin layout
 		event.setLayout(name="admin",module="contentbox-admin");
+
+		// tab control
+		prc.tabModules = true;
+		prc.tabModules_cbFormBuilder = true;
 	}
 
 }

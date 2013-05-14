@@ -1,13 +1,12 @@
 ﻿<cfoutput>
-	#html.select(
-		id=field.getCSSID(),
+	#prc.html.select(
 		name=field.getName(),
-		value=field.getDefaultValue(),
-		label=Field.getLabel(),
-		required=Field.getIsRequired(),
-		size=Field.getMaxLength,
-		class=Field.getCSSClass(),
-		options=Field.getFieldOptions(),
+		label=field.getLabel(),
+		required=field.getIsRequired(),
+		help=field.getHelpText(),
+		id=field.getCSSID(),
+		class=field.getCSSClass(),
+		options=field.getFieldOptions(),
 		column="actualValue",
 		nameColumn="displayValue"
 	)#
