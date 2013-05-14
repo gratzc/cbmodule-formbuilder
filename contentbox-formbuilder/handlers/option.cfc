@@ -21,14 +21,15 @@ component extends="base" {
 
 	// save form
 	function save(event,rc,prc){
-
 		// get it and populateIt
-		var oOption= populateModel( optionService.get(id=rc.fieldoptionID) );
+		var oOption= populateModel( optionService.get(id=rc.fieldOptionID) );
+
 		if( !oOption.isLoaded() ){
 			oField = fieldService.get( event.getValue("fieldID",0) );
 			oOption.setField(oField);
 		}
 
+		//TODO: make the item checked exclusive (turn the others off when turning this on)
 		if ( !event.valueExists("isChecked") ) {
 			oOption.setIsChecked(false);
 		}
@@ -42,7 +43,7 @@ component extends="base" {
 			getPlugin("MessageBox").info("Option saved! Woot!");
 		}
 		else{
-			getPlugin("MessageBox").warn(errorMessages=errors);
+			getPlugin("MessageBox").warn(messageArray=errors);
 		}
 
 		// relocate back to editor
@@ -53,13 +54,13 @@ component extends="base" {
 		var oOption	= optionService.get( rc.optionID );
 
 		if( isNull(oOption) ){
-			getPlugin("MessageBox").setMessage("warning","Invalid Option detected!");
+			getPlugin("MessageBox").setMessage("warning","Invalid option detected!");
 			setNextEvent(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
 		}
 		// remove
 		optionService.delete( oOption );
 		// message
-		getPlugin("MessageBox").setMessage("info","Option Removed!");
+		getPlugin("MessageBox").setMessage("info","Option removed!");
 		// redirect
 		setNextEvent(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
 	}

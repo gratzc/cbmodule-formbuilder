@@ -1,14 +1,12 @@
 ﻿<cfoutput>
-	#html.label(field=field.getName(),content=field.getLabel())#
-	<cfloop array="#field.getFieldOptions()#" index="option" >
-	#html.radioButton(
-		id=field.getCSSID(),
+	#prc.html.chooseGroup(
 		name=field.getName(),
-		value=option.getActualValue(),
-		label=option.getDisplayValue(),
-		required=Field.getIsRequired(),
-		size=Field.getMaxLength,
-		class=Field.getCSSClass()
+		label=field.getLabel(),
+		required=field.getIsRequired(),
+		field=field.getName(),
+		options=field.getFieldOptions(),
+		id=field.getCSSID(),
+		class=field.getCSSClass(),
+		type="radio"
 	)#
-	</cfloop>
 </cfoutput>

@@ -8,7 +8,8 @@
 	<!--- Create Form --->
 	<div class="buttonBar">
 		<!--- typeForm --->
-		#html.select(label="Type:",name="typeID",options=prc.types,column="typeID",nameColumn="typeName",class="inline")#
+		<label for="typeID" class="inline">Type:</label>
+		#html.select(name="typeID",options=prc.types,column="typeID",nameColumn="typeName")#
 		<button class="button2" onclick="toForm(); return false;" title="Create new field">Create Field</button>
 	</div>
 	<!--- Filter Bar --->
