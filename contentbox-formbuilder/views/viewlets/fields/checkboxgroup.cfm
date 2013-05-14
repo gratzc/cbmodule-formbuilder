@@ -1,14 +1,15 @@
 ﻿<cfoutput>
-	#html.label(field=field.getName(),content=field.getLabel())#
-	<cfloop array="#field.getFieldOptions()#" index="option" >
-	#html.checkbox(
-		id=field.getCSSID(),
+	#prc.html.chooseGroup(
+		type="checkbox",
+		field=field.getName(),
+		label=field.getLabel(),
 		name=field.getName(),
-		value=option.getActualValue(),
-		label=option.getDisplayValue(),
-		required=Field.getIsRequired(),
-		size=Field.getMaxLength,
-		class=Field.getCSSClass()
+		options=field.getFieldOptions(),
+		id=field.getCSSID(),
+		class=field.getCSSClass()
 	)#
-	</cfloop>
+	<!---
+		required=field.getIsRequired(),
+		value=option.getActualValue(),
+	--->
 </cfoutput>

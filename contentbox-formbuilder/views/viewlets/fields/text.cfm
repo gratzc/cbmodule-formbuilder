@@ -1,11 +1,12 @@
 ﻿<cfoutput>
-	#html.textField(
-		id=field.getCSSID(),
+	#prc.html.textField(
 		name=field.getName(),
+		label=field.getLabel(),
+		required=field.getIsRequired(),
 		value=field.getDefaultValue(),
-		label=Field.getLabel(),
-		required=Field.getIsRequired(),
-		size=Field.getMaxLength,
-		class=Field.getCSSClass()
+		maxlength=field.getMaxLength(),
+		help=field.getHelpText(),
+		id=field.getCSSID(),
+		class=field.getCSSClass()
 	)#
 </cfoutput>

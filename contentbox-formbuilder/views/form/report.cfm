@@ -1,22 +1,9 @@
 ﻿<cfoutput>
 <!--============================Sidebar============================-->
 <div class="sidebar">
-	<!--- Saerch Box --->
-	<div class="small_box">
-		<div class="header">
-			<img src="#prc.cbroot#/includes/images/help.png" alt="info" width="24" height="24" />Actions
-		</div>
-		<div class="body">
-			<!--- Back button --->
-			<p class="center">
-				<button class="button" onclick="return to('#event.buildLink(prc.xehFormEditor)#/formID/#rc.formID#')"> <img src="#prc.cbroot#/includes/images/go-back.png" alt="Back"/> Back To #rc.Form.getName()#</button>
-			</p>
-			<!--- Back button --->
-			<p class="center">
-				<button class="button" onclick="return to('#event.buildLink(prc.xehForms)#')"> <img src="#prc.cbroot#/includes/images/go-back.png" alt="help"/> Back To Forms</button>
-			</p>
-		</div>
-	</div>
+	<cfinclude template="../sidebar/actions.cfm">
+
+	<cfinclude template="../sidebar/about.cfm">
 </div>
 <!--End sidebar-->
 <!--============================Main Column============================-->
@@ -51,6 +38,11 @@
 						#html.textField(name="formSubmissionFilter",size="30",class="textfield")#
 					</div>
 				</div>
+			</div>
+
+			<div class="infoBar">
+				<img src="#prc.cbRoot#/includes/images/info.png" alt="info" />
+				Form mailing will use your ContentBox mail settings.
 			</div>
 
 			<!--- submissions --->

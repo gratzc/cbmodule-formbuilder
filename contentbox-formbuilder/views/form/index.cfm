@@ -1,21 +1,11 @@
 <cfoutput>
-<!--============================Sidebar============================-->
+<!--============================ Sidebar ============================-->
 <div class="sidebar">
-	<!--- Saerch Box --->
-	<div class="small_box">
-		<div class="header">
-			<img src="#prc.cbroot#/includes/images/help.png" alt="info" width="24" height="24" />Help
-		</div>
-		<div class="body">
-			<ul class="tipList">
-				<li>Create as many forms as you like, just remember the slugs need to be unique.</li>
-				<li>Display forms on your pages or in your blog post by installing the ContentBox Forms Widget and using the ckEditor.</li>
-				<li>Form mailing will use your ContentBox mail settings.</li>
-			</ul>
-		</div>
-	</div>
+	<cfinclude template="../sidebar/actions.cfm" >
+	<cfinclude template="../sidebar/help.cfm" >
+	<cfinclude template="../sidebar/about.cfm" >
 </div>
-<!--End sidebar-->
+
 <!--============================Main Column============================-->
 <div class="main_column">
 	<div class="box">

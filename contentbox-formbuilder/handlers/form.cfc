@@ -52,9 +52,8 @@ component extends="base" {
 		}
 
 		if ( !event.valueExists("useCAPTCHA") ) {
-			oField.setUseCAPTCHA(false);
+			oForm.setUseCAPTCHA(false);
 		}
-
 
 		// validate it
 		var errors = oForm.validate();
@@ -65,7 +64,7 @@ component extends="base" {
 			getPlugin("MessageBox").info("Form saved! Now you are happy!");
 		}
 		else{
-			getPlugin("MessageBox").warn(errorMessages=errors);
+			getPlugin("MessageBox").warn(messageArray=errors);
 		}
 
 		// relocate back to editor

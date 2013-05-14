@@ -20,7 +20,6 @@ component extends="base" {
 
 		prc.Types = TypeService.getTypes();
 
-
 		// viewlets
 		prc.fieldOptionsViewlet = "";
 		if( prc.field.isLoaded() ){
@@ -34,15 +33,15 @@ component extends="base" {
 
 	// save form
 	function save(event,rc,prc){
-
 		// get it and populateIt
-		var oField= populateModel( fieldService.get(id=rc.fieldID) );
+		var oField = populateModel( fieldService.get(id=rc.fieldID) );
+
 		if( !oField.isLoaded() ){
 			oForm = formService.get( event.getValue("formID",0) );
 			oField.setForm(oForm);
 		}
 
-		if (!len(oField.getLabel())){
+		if ( !len(oField.getLabel()) ){
 			oField.setLabel(oField.getName());
 		}
 
@@ -57,9 +56,8 @@ component extends="base" {
 			fieldService.save( oField );
 			// Message
 			getPlugin("MessageBox").info("Field saved! Woot!");
-		}
-		else{
-			getPlugin("MessageBox").warn(errorMessages=errors);
+		} else {
+			getPlugin("MessageBox").warn(messageArray=errors);
 		}
 
 		// relocate back to editor
@@ -77,8 +75,9 @@ component extends="base" {
 		fieldService.delete( oField );
 		// message
 		getPlugin("MessageBox").setMessage("info","Field Removed!");
-		// redirect
-		setNextEvent(prc.xehFields);
+
+		// relocate back to editor
+		setNextEvent(event=prc.xehFormEditor,queryString="formID=#rc.formID#/##fields");
 	}
 
 	// change order for all rules
