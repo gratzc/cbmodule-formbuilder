@@ -11,7 +11,7 @@ component extends="contentbox.model.ui.BaseWidget" singleton{
 		setPluginName("FormBuilder");
 		setPluginVersion("1.0");
 		setPluginDescription("A widget that renders a form built in the FormBuilder Module");
-		setPluginAuthor("Curt Gratz");
+		setPluginAuthor("Computer Know How");
 		setPluginAuthorURL("www.compknowhow.com");
 		setForgeBoxSlug("cbwidget-formbuilder");
 

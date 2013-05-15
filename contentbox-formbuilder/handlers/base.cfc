@@ -16,7 +16,7 @@ component{
 		var prc = event.getCollection(private=true);
 
 		// if data isn't setup, redirect user
-		if( FormSubmissionService.isDataSetup() && event.getCurrentEvent() NEQ "contentbox-formbuilder:form.noDataSetup") {
+		if( !FormSubmissionService.isDataSetup() && event.getCurrentEvent() NEQ "contentbox-formbuilder:form.noDataSetup") {
 			setNextEvent("cbFormBuilder.form.noDataSetup");
 		}
 
