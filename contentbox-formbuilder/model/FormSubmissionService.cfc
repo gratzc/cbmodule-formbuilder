@@ -27,6 +27,20 @@ component extends="coldbox.system.orm.hibernate.VirtualEntityService" singleton{
 	}
 
 	/**
+	* Checks if ORM entities are setup correctly
+	* returns {Boolean} whether  or not ORM entities are setup correctly
+	*/
+	public Boolean function isDataSetup() {
+		try {
+			var testData = EntityLoad( "Form" );
+			return true;
+		}
+		catch( Any e ) {
+			return false;
+		}
+	}
+
+	/**
 	* Validate incoming submission
 	*/
 	public array function validateSubmission(event,rc,prc){
