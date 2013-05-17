@@ -10,7 +10,7 @@
 		<!--- typeForm --->
 		<label for="typeID" class="inline">Type:</label>
 		#html.select(name="typeID",options=prc.types,column="typeID",nameColumn="typeName")#
-		<button class="button2" onclick="toForm(); return false;" title="Create new field">Create Field</button>
+		<button class="btn btn-danger" onclick="toForm(); return false;" title="Create new field">Create Field</button>
 	</div>
 	<!--- Filter Bar --->
 	<div class="filterBar">
@@ -20,13 +20,8 @@
 		</div>
 	</div>
 </div>
-<!--- Usage --->
-<div class="infoBar">
-	<img src="#prc.cbRoot#/includes/images/info.png" alt="info" />
-	You can drag and drop the rows to the desired order of display.
-</div>
 <!--- fields --->
-<table name="fields" id="fields" class="tablesorter" width="98%">
+<table name="fields" id="fields" class="tablesorter table table-striped" width="98%">
 	<thead>
 		<tr>
 			<th>Field Name</th>
@@ -45,9 +40,9 @@
 			<td class="center">
 				<!--- Edit Command --->
 				<a href="#event.buildLink(prc.xehFieldEditor)#/fieldID/#field.getFieldID()#"
-				   title="Edit #field.getName()#"><img src="#prc.cbroot#/includes/images/edit.png" alt="edit" border="0" /></a>
+				   title="Edit #field.getName()#"><i class="icon-edit icon-large"></i></a>
 				<!--- Delete Command --->
-				<a title="Delete Field" href="javascript:removeField('#field.getFieldID()#')" class="confirmIt" data-title="Delete Field?"><img id="delete_#field.getFieldID()#" src="#prc.cbroot#/includes/images/delete.png" border="0" alt="delete"/></a>
+				<a title="Delete Field" href="javascript:removeField('#field.getFieldID()#')" class="confirmIt" data-title="Delete Field?"><i id="delete_#field.getFieldID()#" class="icon-trash icon-large"></i></a>
 			</td>
 		</tr>
 		</cfloop>

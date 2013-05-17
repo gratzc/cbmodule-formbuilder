@@ -2,7 +2,7 @@
 <!--- Search Box --->
 <div class="small_box">
 	<div class="header">
-		<img src="#prc.cbroot#/includes/images/help.png" alt="info" width="24" height="24" />Help
+		<i class="icon-question-sign"></i> Help
 	</div>
 	<div class="body">
 		<ul class="tipList">
