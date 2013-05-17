@@ -1,4 +1,5 @@
 <cfoutput>
+#renderView( "viewlets/assets" )#
 <!--============================Main Column============================-->
 <div class="row-fluid">
 	<div class="span9" id="main-content">
@@ -19,20 +20,20 @@
 				#html.hiddenField(name="formID",value="")#
 
 				<!--- Filter Bar --->
-				<div class="well well-small">
-					<div class="row-fluid">
-						<div class="span6">
+				<div class="well well-small" style="padding: 2px 9px 0 9px;">
+					<div class="buttonBar">
+						<button class="btn btn-danger" onclick="return to('#event.buildLink(prc.xehFormEditor)#')" title="Create new form">Create Form</button>
+					</div>
+					<div class="filterBar">
+						<div>
 							#html.label(field="formFilter",content="Quick Filter:",class="inline")#
-							#html.textField(name="formFilter",size="30",class="textfield",style="margin-bottom: 0;")#
-						</div>
-						<div class="span6">
-							<button class="btn btn-danger" onclick="return to('#event.buildLink(prc.xehFormEditor)#')" title="Create new form" style="float: right;">Create Form</button>
+							#html.textField(name="formFilter",size="30",class="textfield")#
 						</div>
 					</div>
 				</div>
 
 				<!--- forms --->
-				<table name="forms" id="forms" class="tablesorter table table-striped">
+				<table name="forms" id="forms" class="tablesorter table table-striped" width="98%">
 					<thead>
 						<tr>
 							<th>Form</th>

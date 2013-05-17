@@ -1,4 +1,5 @@
 ﻿<cfoutput>
+#renderView( "viewlets/assets" )#
 <!--============================Main Column============================-->
 <div class="row-fluid">
 	<div class="span9" id="main-content">
