@@ -52,12 +52,13 @@
 							</div>
 
 							<!--- Options --->
+							<cfif prc.field.isLoaded() and prc.showOptions>
 							<div>
-							#html.startFieldset(legend="Field Options")#
-								#prc.fieldOptionsViewlet#
-							#html.endFieldSet()#
+								#html.startFieldset(legend="Field Options")#
+									#prc.fieldOptionsViewlet#
+								#html.endFieldSet()#
 							</div>
-
+							</cfif>
 						</div>
 					</div>
 				</div>
