@@ -127,4 +127,12 @@ component extends="base" {
 		setNextEvent(prc.xehSubmissionReport,"formID=#rc.formID#");
 	}
 
+	/**
+	* noDataSetup
+	*/
+	any function noDataSetup(event,rc,prc){
+
+		event.setView("form/noDataSetup");
+	}
+
 }

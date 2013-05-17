@@ -15,6 +15,11 @@ component{
 		var rc 	= event.getCollection();
 		var prc = event.getCollection(private=true);
 
+		// if data isn't setup, redirect user
+		if( !FormSubmissionService.isDataSetup() && event.getCurrentEvent() NEQ "contentbox-formbuilder:form.noDataSetup") {
+			setNextEvent("cbFormBuilder.form.noDataSetup");
+		}
+
 		// exit points
 		prc.xehForms = "cbFormBuilder.form.index";
 		prc.xehFormEditor = "cbFormBuilder.form.editor";

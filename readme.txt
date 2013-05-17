@@ -13,3 +13,10 @@ CHANGELOG
 
 Version 0.01
 # Alpha Release
+
+Version 1.00
+# Supports up to ContentBox version 1.2
+# Bug Fixes
+# Integrated widget
+# Style updates
+# reCapcha support
