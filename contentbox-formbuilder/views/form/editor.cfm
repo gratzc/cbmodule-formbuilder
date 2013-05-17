@@ -1,38 +1,29 @@
 ﻿<cfoutput>
-<!--============================ Sidebar ============================-->
-<div class="sidebar">
-	<cfinclude template="../sidebar/actions.cfm" >
-	<cfinclude template="../sidebar/help.cfm" >
-	<cfinclude template="../sidebar/about.cfm" >
-</div>
-
 <!--============================Main Column============================-->
-<div class="main_column">
-	<div class="box">
-		<!--- Body Header --->
-		<div class="header">
-			<img src="#prc.cbroot#/includes/images/forms_icon.png" alt="sofa" width="30" height="30" />
-			<cfif prc.form.isLoaded()>Editing "#prc.form.getName()#"<cfelse>Create Form</cfif>
-		</div>
-		<!--- Body --->
-		<div class="body">
-			#getPlugin("MessageBox").renderIt()#
+<div class="row-fluid">
+	<div class="span9" id="main-content">
+		<div class="box">
+			<!--- Body Header --->
+			<div class="header">
+				<i class="icon-file-alt"></i>
+				<cfif prc.form.isLoaded()>Editing "#prc.form.getName()#"<cfelse>Create Form</cfif>
+			</div>
+			<!--- Body --->
+			<div class="body">
+				#getPlugin("MessageBox").renderIt()#
 
-			<!--- Vertical Nav --->
-			<div class="body_vertical_nav clearfix">
-				<!--- User Navigation Bar --->
-				<ul class="vertical_nav">
-					<li class="active"><a href="##formDetails"><img src="#prc.cbRoot#/includes/images/settings_black.png" alt="modifiers"/> Form Details</a></li>
-					<cfif prc.form.isLoaded()>
-					<li><a href="##fields"><img src="#prc.cbRoot#/includes/images/active_sub_menu_bg.gif" alt="modifiers"/> Form Fields</a></li>
-					</cfif>
-				</ul>
-				<!--- Tab Content --->
-				<div class="main_column">
-					<div class="panes_vertical">
-						<!--- Form Details --->
-						<div>
-							<!--- FormForm --->
+				<div class="tabbable tabs-left">
+					<!--- User Navigation Bar --->
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="##formDetails" data-toggle="tab"><i class="icon-list-alt"></i> Form Details</a></li>
+						<cfif prc.form.isLoaded()>
+						<li><a href="##formFields" data-toggle="tab"><i class="icon-list-ul"></i> Form Fields</a></li>
+						</cfif>
+					</ul>
+
+					<div class="tab-content">
+						<div class="tab-pane active" id="formDetails">
+							<!--- Form Details --->
 							#html.startForm(name="formForm",action=prc.xehFormsave,novalidate="novalidate")#
 								#html.startFieldset(legend="Form Details")#
 								#html.hiddenField(name="formID",bind=prc.form)#
@@ -54,21 +45,23 @@
 							#html.endForm()#
 						</div>
 
-						<!--- My Entries --->
-						<div>
-						#html.startFieldset(legend="Form Fields")#
-							#prc.fieldsViewlet#
-						#html.endFieldSet()#
+						<!--- Form Fields --->
+						<div class="tab-pane" id="formFields">
+							#html.startFieldset(legend="Form Fields")#
+								#prc.fieldsViewlet#
+							#html.endFieldSet()#
 						</div>
-
 					</div>
-					<!--- end panes_vertical --->
 				</div>
-				<!--- end panes content --->
 			</div>
-			<!--- end vertical nav --->
+		</div>
+	</div>
 
-		</div>	<!--- body --->
-	</div> <!--- main box --->
-</div> <!--- main column --->
+	<!--============================ Sidebar ============================-->
+	<div class="span3" id="main-sidebar">
+		<cfinclude template="../sidebar/actions.cfm" >
+		<cfinclude template="../sidebar/help.cfm" >
+		<cfinclude template="../sidebar/about.cfm" >
+	</div>
+</div>
 </cfoutput>
