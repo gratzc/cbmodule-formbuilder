@@ -81,11 +81,13 @@
 						</div>
 
 						<!--- Options --->
-						<div>
-						#html.startFieldset(legend="Field Options")#
-							#prc.fieldOptionsViewlet#
-						#html.endFieldSet()#
-						</div>
+						<cfif prc.field.isLoaded() and prc.showOptions>
+							<div>
+							#html.startFieldset(legend="Field Options")#
+								#prc.fieldOptionsViewlet#
+							#html.endFieldSet()#
+							</div>
+						</cfif>
 
 					</div>
 					<!--- end panes_vertical --->
