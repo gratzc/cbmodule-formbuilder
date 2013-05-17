@@ -1,0 +1,15 @@
+.buttonBar {
+	margin: 0;
+}
+
+.buttonBar .btn {
+	margin-bottom: 10px;
+}
+
+.well-small {
+	padding: 2px 9px 0 9px;
+}
+
+.well-small .buttonBar {
+	margin: 10px 0px 0px 10px;
+}
