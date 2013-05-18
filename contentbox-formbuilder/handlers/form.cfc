@@ -3,6 +3,7 @@
 */
 component extends="base" {
 
+
 	function index(event,rc,prc){
 		//exit points
 		prc.xehFormRemove = "cbFormBuilder.form.remove";
@@ -13,10 +14,12 @@ component extends="base" {
 		event.setView(view="form/index",module="contentbox-formbuilder");
 	}
 
+
 	// slugify remotely
 	function slugify(event,rc,prc){
 		event.renderData(data=getPlugin("HTMLHelper").slugify( rc.slug ),type="plain");
 	}
+
 
 	// form editor
 	function editor(event,rc,prc){
@@ -26,6 +29,9 @@ component extends="base" {
 
 		// get new or persisted form
 		prc.form  = formService.get( event.getValue("formID",0) );
+
+		//repopulate form form failed save
+		formService.populate(prc.form,rc);
 
 		// viewlets
 		prc.fieldsViewlet = "";
@@ -40,6 +46,7 @@ component extends="base" {
 		// view
 		event.setView("form/editor");
 	}
+
 
 	// save form
 	function save(event,rc,prc){
@@ -62,14 +69,16 @@ component extends="base" {
 			formService.save( oForm );
 			// Message
 			getPlugin("MessageBox").info("Form saved! Now you are happy!");
+			setNextEvent(event=prc.xehFormEditor,queryString="formID=#oForm.getFormID()#");
 		}
 		else{
+			flash.persistRC(exclude="event");
 			getPlugin("MessageBox").warn(messageArray=errors);
+			setNextEvent(event=prc.xehFormEditor,queryString="formID=#oForm.getFormID()#");
 		}
 
-		// relocate back to editor
-		setNextEvent(event=prc.xehFormEditor,queryString="formID=#oForm.getFormID()#");
 	}
+
 
 	function remove(event,rc,prc){
 		var oForm	= formService.get( rc.formID );
@@ -85,6 +94,7 @@ component extends="base" {
 		// redirect
 		setNextEvent(prc.xehForms);
 	}
+
 
 	function fields(event,rc,prc,formID){
 		//exit points
@@ -104,6 +114,7 @@ component extends="base" {
 		return renderview(view="viewlets/fields",module="contentbox-formbuilder");
 	}
 
+
 	function submissionReport(event,rc,prc) {
 		rc.Form = formService.get( rc.formID );
 		prc.submissions = rc.Form.getSubmissions();
@@ -111,6 +122,7 @@ component extends="base" {
 		prc.xehFormSubmissionRemove = 'cbFormBuilder.form.removeSubmission';
 		event.setView("form/report");
 	}
+
 
 	function removeSubmission(event,rc,prc) {
 		var oSubmission	= formSubmissionService.get( rc.formSubmissionID );
