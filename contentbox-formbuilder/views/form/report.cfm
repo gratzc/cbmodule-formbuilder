@@ -6,7 +6,7 @@
 		<div class="box">
 			<!--- Body Header --->
 			<div class="header">
-				<img src="#prc.cbroot#/includes/images/forms_icon.png" alt="forms" width="30" height="30" />
+				<i class="icon-share"></i>
 				Form Submissions
 			</div>
 			<!--- Body --->
@@ -21,7 +21,7 @@
 				#html.hiddenField(name="formID",value="#rc.formID#")#
 
 				<!--- Content Bar --->
-				<div class="contentBar">
+				<div class="well well-small">
 					<!--- Create Form --->
 					<div class="buttonBar">
 						<button class="btn btn-danger" onclick="return to('#event.buildLink(prc.xehFormEditor)#')" title="Create new form">Create Form</button>
@@ -35,13 +35,13 @@
 					</div>
 				</div>
 
-				<div class="infoBar">
-					<img src="#prc.cbRoot#/includes/images/info.png" alt="info" />
-					Form mailing will use your ContentBox mail settings.
+				<div class="alert alert-info">
+					<i class="icon-info-sign"></i>
+					Form mailings will use your ContentBox mail settings.
 				</div>
 
 				<!--- submissions --->
-				<table name="submissions" id="submissions" class="tablesorter" width="98%">
+				<table name="submissions" id="submissions" class="tablesorter table table-striped" width="98%">
 					<thead>
 						<tr>
 							<th>Date</th>
