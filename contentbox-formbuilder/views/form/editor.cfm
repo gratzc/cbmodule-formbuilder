@@ -34,7 +34,7 @@
 								#html.textField(name="slug",bind=prc.form,label="*Slug:",required="required",size="50",class="textfield",title="A slug to identify the form.  Must be unique.")#
 								#html.textarea(label="Directions:",name="directions",bind=prc.form,rows="10",title="Type some directions for the form")#
 								#html.textarea(label="*Submit Message:",name="submitMessage",bind=prc.form,rows="10",required="required",title="The message I should display after the form is submitted")#
-								#html.textField(name="emailTo",bind=prc.form,label="Email To:",size="50",class="textfield",title="A comma seperated list of email address I should send the form respones to, leave blank for none")#
+								#html.textField(name="emailTo",bind=prc.form,label="Email To:",size="50",class="textfield",title="A comma seperated list of email address I should send the form responses to, leave blank for none")#
 								#html.textField(name="cssID",bind=prc.form,label="CSS ID:",size="50",class="textfield",title="The CSS ID for this form, used to style the form, if you don't know what this is kindly leave it blank")#
 								#html.textField(name="cssClass",bind=prc.form,label="CSS Class:",size="50",class="textfield",title="The CSS Class(s) for this form, used to style the form, if you don't know what this is kindly leave it blank")#
 								#html.checkbox(name="useCAPTCHA",bind=prc.form,label="Use CAPTCHA:",size="50",class="textfield",title="We highly suggest you leave this ON!!!")#
