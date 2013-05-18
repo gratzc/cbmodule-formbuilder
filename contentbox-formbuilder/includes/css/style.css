@@ -13,3 +13,17 @@
 .well-small .buttonBar {
 	margin: 10px 0px 0px 10px;
 }
+
+.small_box .btn {
+	margin-bottom: 5px;
+}
+
+.form-actions {
+	margin-bottom: -8px;
+	padding-left: 0;
+}
+
+.icon-trash {
+	position: relative;
+	top: -1px;
+}

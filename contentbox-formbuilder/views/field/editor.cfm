@@ -1,4 +1,5 @@
 ﻿<cfoutput>
+#renderView( "viewlets/assets" )#
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
@@ -40,7 +41,7 @@
 								#html.textField(name="cssID",bind=prc.field,label="CSS ID:",size="50",class="textfield",title="The CSS ID for this field, used to style the form, if you don't know what this is kindly leave it blank")#
 								#html.textField(name="cssClass",bind=prc.field,label="CSS Class:",size="50",class="textfield",title="The CSS Class(s) for this field, used to style the form, if you don't know what this is kindly leave it blank")#
 
-								<div>
+								<div class="form-actions">
 									<button class="btn" onclick="return to('#event.buildLink(prc.xehFormEditor)#/formID/#prc.field.getForm().getFormID()#')">Cancel</button>
 									<input type="submit" value="Save" class="btn btn-danger">
 								</div>
