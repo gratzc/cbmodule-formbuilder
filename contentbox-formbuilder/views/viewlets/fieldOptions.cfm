@@ -1,4 +1,5 @@
 ﻿<cfoutput>
+#renderView( "viewlets/assets" )#
 <!--- FieldForm --->
 #html.startForm(name="fieldOptionForm",action=prc.xehOptionRemove)#
 #html.hiddenField(name="optionID",value="")#
@@ -8,7 +9,7 @@
 	<!--- Create Form --->
 	<div class="buttonBar">
 		<!--- typeForm --->
-		<button class="button2" onclick="toForm(); return false;" title="Create new option">Create Option</button>
+		<button class="btn btn-danger" onclick="toForm(); return false;" title="Create new option">Create Option</button>
 	</div>
 	<!--- Filter Bar --->
 	<div class="filterBar">
@@ -19,12 +20,12 @@
 	</div>
 </div>
 <!--- Usage --->
-<div class="infoBar">
-	<img src="#prc.cbRoot#/includes/images/info.png" alt="info" />
+<div class="alert alert-info">
+	<i class="icon-info-sign"></i>
 	You can drag and drop the rows to the desired order of display.
 </div>
-<!--- options --->
-<table name="options" id="options" class="tablesorter" width="98%">
+<!--- Options --->
+<table name="options" id="options" class="tablesorter table table-striped" width="98%">
 	<thead>
 		<tr>
 			<th>Display Value</th>
@@ -36,16 +37,14 @@
 	<tbody>
 		<cfloop array="#prc.options#" index="option">
 		<tr id="optionid-#option.getFieldOptionID()#">
-			<td><a href="#event.buildLink(prc.xehFieldOptionEditor)#/optionID/#option.getFieldOptionID()#"
-				   title="option #option.getDisplayValue()#">#option.getDisplayValue()#</a></td>
+			<td><a href="#event.buildLink(prc.xehFieldOptionEditor)#/optionID/#option.getFieldOptionID()#" title="option #option.getDisplayValue()#">#option.getDisplayValue()#</a></td>
 			<td>#option.getActualValue()#</td>
-			<td><div id="optionid-#option.getFieldOptionID()#_order">#option.getOrder()#</div></td>
+			<td>#option.getOrder()#</td>
 			<td class="center">
 				<!--- Edit Command --->
-				<a href="#event.buildLink(prc.xehFieldOptionEditor)#/optionID/#option.getFieldOptionID()#"
-				   title="Edit #option.getDisplayValue()#"><img src="#prc.cbroot#/includes/images/edit.png" alt="edit" border="0" /></a>
+				<a href="#event.buildLink(prc.xehFieldOptionEditor)#/optionID/#option.getFieldOptionID()#" title="Edit #option.getDisplayValue()#"><i class="icon-edit icon-large"></i></a>
 				<!--- Delete Command --->
-				<a title="Delete Option" href="javascript:removeOption('#option.getFieldOptionID()#')" class="confirmIt" data-title="Delete Option?"><img id="delete_#option.getFieldOptionID()#" src="#prc.cbroot#/includes/images/delete.png" border="0" alt="delete"/></a>
+				<a title="Delete Option" href="javascript:removeOption('#option.getFieldOptionID()#')" class="confirmIt" data-title="Delete Option?"><i id="delete_#option.getFieldOptionID()#" class="icon-trash icon-large"></i></a>
 			</td>
 		</tr>
 		</cfloop>

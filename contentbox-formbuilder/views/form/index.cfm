@@ -20,7 +20,7 @@
 				#html.hiddenField(name="formID",value="")#
 
 				<!--- Filter Bar --->
-				<div class="well well-small" style="padding: 2px 9px 0 9px;">
+				<div class="well well-small">
 					<div class="buttonBar">
 						<button class="btn btn-danger" onclick="return to('#event.buildLink(prc.xehFormEditor)#')" title="Create new form">Create Form</button>
 					</div>
@@ -50,7 +50,7 @@
 								   title="Edit #myForm.getName()#">#myForm.getName()#</a></td>
 							<td>#myForm.getSlug()#</td>
 							<td>#dateFormat(myForm.getCreatedDate(),"short")# #timeFormat(myForm.getCreatedDate(),"short")#</td>
-							<td><a href="#event.buildLink(prc.xehSubmissionReport)#/formID/#myForm.getFormID()#">#myForm.getNumberOfSubmissions()#</a></td>
+							<td style="text-align: center;">#myForm.getNumberOfSubmissions()# <a href="#event.buildLink(prc.xehSubmissionReport)#/formID/#myForm.getFormID()#"><i class="icon-eye-open icon-large"></i></a></td>
 							<td class="center">
 								<!--- Edit Command --->
 								<a href="#event.buildLink(prc.xehFormEditor)#/formID/#myForm.getFormID()#"
