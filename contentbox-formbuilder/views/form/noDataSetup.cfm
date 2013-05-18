@@ -1,4 +1,5 @@
 <cfoutput>
+#renderView( "viewlets/assets" )#
 <!--============================ Sidebar ============================-->
 <div class="sidebar">
 	<cfinclude template="../sidebar/actions.cfm" >

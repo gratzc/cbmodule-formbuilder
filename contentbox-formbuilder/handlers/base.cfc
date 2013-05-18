@@ -15,6 +15,9 @@ component{
 		var rc 	= event.getCollection();
 		var prc = event.getCollection(private=true);
 
+		// get module root
+		prc.moduleRoot = getModuleSettings( "contentbox-formbuilder" ).mapping;
+
 		// if data isn't setup, redirect user
 		if( !FormSubmissionService.isDataSetup() && event.getCurrentEvent() NEQ "contentbox-formbuilder:form.noDataSetup") {
 			setNextEvent("cbFormBuilder.form.noDataSetup");
