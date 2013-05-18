@@ -16,6 +16,8 @@ component extends="base" {
 			prc.field.setTypeID(rc.typeID);
 		}
 
+		fieldService.populate(prc.field,rc);
+
 		prc.showOptions = typeService.getShowOptionByTypeID(prc.field.getTypeID());
 
 		prc.Types = TypeService.getTypes();
@@ -26,9 +28,6 @@ component extends="base" {
 			var args = {fieldID=rc.fieldID};
 			prc.fieldOptionsViewlet = runEvent(event="contentbox-formbuilder:field.options",eventArguments=args);
 		}
-
-		// view
-		event.setView("field/editor");
 	}
 
 	// save form
@@ -59,7 +58,7 @@ component extends="base" {
 		} else {
 			getPlugin("MessageBox").warn(messageArray=errors);
 		}
-
+		flash.persistRC(exclude="event");
 		// relocate back to editor
 		setNextEvent(event=prc.xehFieldEditor,queryString="fieldID=#oField.getFieldID()#");
 	}
