@@ -11,45 +11,44 @@ component extends="base" {
 		event.setView("settings/index");
 	}
 
-	function saveCAPTCHASettings(event,rc,prc){
-		// Get Form Builder settings from user input
-		var newSettings = serializeJSON({"htmlHelper"={"groupWrapper"=rc.groupWrapper,"groupWrapperClass"=rc.groupWrapperClass,"labelWrapper"=rc.labelWrapper,"labelWrapperClass"=rc.labelWrapperClass,"label"=rc.label,"labelClass"=rc.labelClass,"helpWrapper"=rc.helpWrapper,"helpWrapperClass"=rc.helpWrapperClass,"wrapper"=rc.wrapper,"wrapperClass"=rc.wrapperClass},"CAPTCHAType"=rc.CAPTCHAType,"reCAPTCHA"={"publicKey"=rc.publicKey, "privateKey"=rc.privateKey}});
+	function saveSettings(event,rc,prc){
+		var incomingSetting = "";
+		var newSetting = {};
+		var newSettings = {};
 
-		// Get Form Builder settings object
 		var oSetting = settingService.findWhere( { name="form_builder" } );
 
-		// Set the value and save
-		oSetting.setValue( newSettings );
+		// Get Form Builder settings from user input
+		if(structKeyExists(rc,"CAPTCHAType")) {
+			incomingSetting = serializeJSON({"CAPTCHAType"=rc.CAPTCHAType});
+			newSetting = deserializeJSON(incomingSetting);
+			structAppend(newSettings,newSetting);
+		}
+
+		if(structKeyExists(rc,"publicKey")) {
+			incomingSetting = serializeJSON({"reCAPTCHA"={"publicKey"=rc.publicKey, "privateKey"=rc.privateKey}});
+			newSetting = deserializeJSON(incomingSetting);
+			structAppend(newSettings,newSetting);
+		}
+
+		if(structKeyExists(rc,"groupWrapper")) {
+			incomingSetting = serializeJSON({"htmlHelper"={"groupWrapper"=rc.groupWrapper,"groupWrapperClass"=rc.groupWrapperClass,"labelWrapper"=rc.labelWrapper,"labelWrapperClass"=rc.labelWrapperClass,"label"=rc.label,"labelClass"=rc.labelClass,"helpWrapper"=rc.helpWrapper,"helpWrapperClass"=rc.helpWrapperClass,"wrapper"=rc.wrapper,"wrapperClass"=rc.wrapperClass}});
+			newSetting = deserializeJSON(incomingSetting);
+			structAppend(newSettings,newSetting);
+		}
+
+		var settings = deserializeJSON(oSetting.getValue());
+
+		// Append the new settings sent in to the existing settings (overwrite)
+		structAppend(settings,newSettings);
+
+		oSetting.setValue( serializeJSON(settings) );
 		settingService.save( oSetting );
 
 		// Flush the settings cache so our new settings are reflected
 		settingService.flushSettingsCache();
 
-		// Messagebox
 		getPlugin("MessageBox").info("Settings Saved & Updated!");
-
-		// Relocate via CB Helper
-		cb.setNextModuleEvent("cbFormBuilder","settings.index");
-	}
-
-	function saveStyleSettings(event,rc,prc){
-		// Get Form Builder settings from user input
-		var newSettings = serializeJSON({"htmlHelper"={"groupWrapper"=rc.groupWrapper,"groupWrapperClass"=rc.groupWrapperClass,"labelWrapper"=rc.labelWrapper,"labelWrapperClass"=rc.labelWrapperClass,"label"=rc.label,"labelClass"=rc.labelClass,"helpWrapper"=rc.helpWrapper,"helpWrapperClass"=rc.helpWrapperClass,"wrapper"=rc.wrapper,"wrapperClass"=rc.wrapperClass},"CAPTCHAType"=rc.CAPTCHAType,"reCAPTCHA"={"publicKey"=rc.publicKey, "privateKey"=rc.privateKey}});
-
-		// Get Form Builder settings object
-		var oSetting = settingService.findWhere( { name="form_builder" } );
-
-		// Set the value and save
-		oSetting.setValue( newSettings );
-		settingService.save( oSetting );
-
-		// Flush the settings cache so our new settings are reflected
-		settingService.flushSettingsCache();
-
-		// Messagebox
-		getPlugin("MessageBox").info("Settings Saved & Updated!");
-
-		// Relocate via CB Helper
 		cb.setNextModuleEvent("cbFormBuilder","settings.index");
 	}
 
