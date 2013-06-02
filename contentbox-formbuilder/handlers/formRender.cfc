@@ -9,11 +9,19 @@ component {
 	property name="HTMLHelper"					inject="coldbox:myPlugin:HTMLHelper@contentbox-formbuilder";
 
 	function renderForm(event,rc,prc,slug) {
-		prc.form = formService.findWhere({slug=arguments.slug});
-		prc.xehformsubmit = "cbFormBuilder.formRender.submitForm";
-		prc.html = HTMLHelper;
+		if( arguments.slug != "" ){
+			prc.form = formService.findWhere({slug=arguments.slug});
+			if( !isNull(prc.form) ){
+				prc.xehformsubmit = "cbFormBuilder.formRender.submitForm";
+				prc.html = HTMLHelper;
 
-		return renderview(view="viewlets/render",module="contentbox-formbuilder");
+				return renderView(view="viewlets/render",module="contentbox-formbuilder");
+			} else {
+				return "Form '" & arguments.slug & "' not found.";
+			}
+		} else {
+			return "Please provide a form to render.";
+		}
 	}
 
 	function submitForm(event,rc,prc) {
@@ -22,7 +30,6 @@ component {
 		var errors = formSubmissionService.validateSubmission(event,rc,prc);
 
 		if (arrayLen(errors)) {
-			//todo: persist form variables on error to repopulate form
 			getPlugin("MessageBox").setMessage("warning","There was a problem submitting your form!");
 		} else {
 			var oForm = formService.get( rc.formID );
