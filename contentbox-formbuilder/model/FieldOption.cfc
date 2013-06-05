@@ -8,8 +8,8 @@ component persistent="true" table="cb_formFieldOption"{
 
 	// Properties
 	property name="order" notnull="false" ormtype="integer" default="0" dbdefault="0";
-	property name="displayValue" notnull="true" length="2000" default="" index="idx_displayValue";
-	property name="actualValue" notnull="true" length="2000" default="" index="idx_actualValue";
+	property name="displayValue" notnull="true" length="2000" default="";
+	property name="actualValue" notnull="true" length="2000" default="";
 	property name="isChecked" notnull="true" ormtype="boolean" default="true" dbdefault="1" index="idx_isChecked";
 
 	// M2O -> Form

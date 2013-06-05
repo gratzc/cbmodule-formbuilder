@@ -16,7 +16,7 @@ component persistent="true" table="cb_formField"{
 	property name="helpText" notnull="false" length="2000" default="";
 	property name="cssID" notnull="false" length="250" default="";
 	property name="cssClass" notnull="false" length="250" default="";
-	property name="defaultValue" notnull="true" length="2000" default="" index="idx_defaultValue";
+	property name="defaultValue" notnull="true" length="2000" default="";
 
 	// M2O -> Form
 	property name="form" notnull="true" cfc="contentbox.modules.contentbox-formbuilder.model.Form" fieldtype="many-to-one" fkcolumn="FK_formID" lazy="true" fetch="join";
