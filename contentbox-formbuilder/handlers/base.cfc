@@ -33,6 +33,12 @@ component{
 		prc.xehSubmissionReport = "cbFormBuilder.form.submissionReport";
 		prc.xehFormSettings = "cbFormBuilder.settings.index";
 
+		//check login and redirect is needed.
+		if(!prc.oAuthor.isLoaded()){
+			getPlugin("MessageBox").setMessage("warning","Please login!");
+			setNextEvent(prc.xehLogin);
+		}
+
 		// use the CB admin layout
 		event.setLayout(name="admin",module="contentbox-admin");
 
