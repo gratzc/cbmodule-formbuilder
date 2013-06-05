@@ -60,7 +60,7 @@ component extends="base" {
 		}
 		flash.persistRC(exclude="event");
 		// relocate back to editor
-		setNextEvent(event=prc.xehFieldEditor,queryString="fieldID=#oField.getFieldID()#");
+		setNextEvent(event=prc.xehFormEditor,queryString="formID=#oField.getForm().getFormID()#/##formFields");
 	}
 
 	function remove(event,rc,prc){
@@ -76,7 +76,7 @@ component extends="base" {
 		getPlugin("MessageBox").setMessage("info","Field Removed!");
 
 		// relocate back to editor
-		setNextEvent(event=prc.xehFormEditor,queryString="formID=#rc.formID#/##fields");
+		setNextEvent(event=prc.xehFormEditor,queryString="formID=#rc.formID#/##formFields");
 	}
 
 	// change order for all rules
