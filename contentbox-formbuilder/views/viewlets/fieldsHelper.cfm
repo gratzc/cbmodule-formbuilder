@@ -14,9 +14,7 @@
 				var rows = table.tBodies[0].rows;
 				$.post('#event.buildLink(prc.xehFieldOrder)#',{newFieldsOrder:newFieldsOrder},function(){
 					for (var i = 0; i < rows.length; i++) {
-						var oID = '##' + rows[i].id + '_order';
-						console.log(oID);
-						console.log(i+1);
+						var oID = '##' + rows[i].id + '_order';s
 						$(oID).html(i+1);
 					}
 					$(row).css("cursor","move");

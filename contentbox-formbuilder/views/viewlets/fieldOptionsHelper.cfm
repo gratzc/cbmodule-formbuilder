@@ -15,8 +15,6 @@
 				$.post('#event.buildLink(prc.xehOptionOrder)#',{newOptionsOrder:newOptionsOrder},function(){
 					for (var i = 0; i < rows.length; i++) {
 						var oID = '##' + rows[i].id + '_order';
-						console.log(oID);
-						console.log(i+1);
 						$(oID).html(i+1);
 					}
 					$(row).css("cursor","move");
