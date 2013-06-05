@@ -59,7 +59,7 @@
 							<td>#renderView(view="viewlets/renderSubmission",module="contentbox-formbuilder")#</td>
 							<td class="center">
 								<!--- Delete Command --->
-								<a title="Delete Submission" href="javascript:removeSubmission('#submission.getFormSubmissionID()#')" class="confirmIt" data-title="Delete Submission?"><img id="delete_#submission.getFormSubmissionID()#" src="#prc.cbroot#/includes/images/delete.png" border="0" alt="delete"/></a>
+								<a title="Delete Submission" href="javascript:removeSubmission('#submission.getFormSubmissionID()#')" class="confirmIt textRed" data-title="Delete Submission?"><i id="delete_#submission.getFormSubmissionID()#" class="icon-trash icon-large" /></i></a>
 							</td>
 						</tr>
 						</cfloop>
