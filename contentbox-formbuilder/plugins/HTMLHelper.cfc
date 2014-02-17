@@ -20,14 +20,14 @@
 
 			instance.defaultGroupWrapper = "#fbSettings.htmlHelper.groupWrapper#";
 			instance.defaultGroupWrapperClass = "#fbSettings.htmlHelper.groupWrapperClass#";
-			instance.defaultLabelWrapper = "#fbSettings.htmlHelper.LabelWrapper#";
-			instance.defaultLabelWrapperClass = "#fbSettings.htmlHelper.LabelWrapperClass#";
-			instance.defaultLabel = "#fbSettings.htmlHelper.Label#";
-			instance.defaultLabelClass = "#fbSettings.htmlHelper.LabelClass#";
-			instance.defaultWrapper = "#fbSettings.htmlHelper.Wrapper#";
-			instance.defaultWrapperClass = "#fbSettings.htmlHelper.WrapperClass#";
-			instance.defaultHelpWrapper = "#fbSettings.htmlHelper.HelpWrapper#";
-			instance.defaultHelpWrapperClass = "#fbSettings.htmlHelper.HelpWrapperClass#";
+			instance.defaultLabelWrapper = "#fbSettings.htmlHelper.labelWrapper#";
+			instance.defaultLabelWrapperClass = "#fbSettings.htmlHelper.labelWrapperClass#";
+			instance.defaultLabel = "#fbSettings.htmlHelper.label#";
+			instance.defaultLabelClass = "#fbSettings.htmlHelper.labelClass#";
+			instance.defaultWrapper = "#fbSettings.htmlHelper.wrapper#";
+			instance.defaultWrapperClass = "#fbSettings.htmlHelper.wrapperClass#";
+			instance.defaultHelpWrapper = "#fbSettings.htmlHelper.helpWrapper#";
+			instance.defaultHelpWrapperClass = "#fbSettings.htmlHelper.helpWrapperClass#";
 
 			return this;
 		</cfscript>

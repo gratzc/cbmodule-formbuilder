@@ -1,7 +1,7 @@
 /**
 * I am a new interceptor
 */
-component extends="contentbox-admin.interceptors.cbRequest" {
+component extends="contentbox-admin.interceptors.CBRequest" {
 
 	void function configure(){}
 
