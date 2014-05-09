@@ -618,7 +618,7 @@
 			// create label tag
 			if( len(arguments.label) ){
 				buffer.append("<" & arguments.label);
-				if( NOT len(arguments.labelclass) ){ buffer.append(' class="' & arguments.labelClass & '"'); }
+				if( len(arguments.labelclass) ){ buffer.append(' class="' & arguments.labelClass & '"'); }
 				flattenAttributes(arguments,"content,field,wrapper,label,labelclass",buffer).append(">#arguments.content#</" & arguments.label & ">");
 			}
 
