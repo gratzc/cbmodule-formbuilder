@@ -9,7 +9,7 @@ component {
 	this.title 				= "Form Builder";
 	this.author 			= "Computer Know How, LLC";
 	this.webURL 			= "http://www.compknowhow.com";
-	this.description 		= "A cool form builder for content box";
+	this.description 		= "A cool form builder for ContentBox";
 	this.version			= "2.0";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup 	= true;
