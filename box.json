@@ -1,6 +1,6 @@
 {
 	"location": "https://github.com/gratzc/cbmodule-formbuilder/raw/master/contentbox-formbuilder.zip",
-	"name": "ContentBox Form Builder",
+	"name": "Form Builder",
 	"packageDirectory": "contentbox-formbuilder",
 	"slug": "ContentBox-FormBuilder-Module",
 	"type": "contentbox-modules",
