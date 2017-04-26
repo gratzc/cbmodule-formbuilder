@@ -1,4 +1,4 @@
-Form Builder Module
+ContentBox Form Builder Module
 =================
 
 Author
