@@ -6,7 +6,7 @@
 component {
 
 	// Module Properties
-	this.title 				= "ContentBox Form Builder";
+	this.title 				= "Form Builder";
 	this.author 			= "Computer Know How, LLC";
 	this.webURL 			= "http://www.compknowhow.com";
 	this.description 		= "A cool form builder for content box";
