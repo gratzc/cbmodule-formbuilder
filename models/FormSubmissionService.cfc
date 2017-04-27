@@ -57,11 +57,11 @@ component extends="modules.contentbox.modules.contentbox-deps.modules.cborm.mode
 		errors = [];
 
 		// CAPTCHA validation
-		if(settings.CAPTCHAType eq "CF") {
-			if( event.valueExists("captchacode") && !captcha.validate( rc.captchacode ) ){
+		if( event.valueExists("captchacode") ) {
+			if (!captcha.validate( rc.captchacode )) {
 				arrayAppend(errors, "Invalid security code. Please try again.");
 			}
-		} else if(settings.CAPTCHAType eq "reCAPTCHA") {
+		} else if (structKeyExists(form, "g-recaptcha-response")) {
 			var recaptcha = form["g-recaptcha-response"];
 
 			if (len(recaptcha)) {
