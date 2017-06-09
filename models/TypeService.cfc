@@ -45,6 +45,12 @@ component singleton{
 				typeName="CheckBox Group",
 				showOptions="true",
 				view="checkboxgroup"
+			},
+			{
+				typeID="7",
+				typeName="Custom Template",
+				showOptions="false",
+				view="custom"
 			}
 		]
 		return types;

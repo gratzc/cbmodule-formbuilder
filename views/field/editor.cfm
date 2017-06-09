@@ -69,6 +69,9 @@
 											#html.textField(name="cssClass",bind=prc.field,label="CSS Class:",class="form-control",title="The CSS Class(s) for this field, used to style the form, if you don't know what this is kindly leave it blank")#
 										</div>
 
+										<div class="form-group"<cfif prc.field.getTypeID() neq 7> style="display: none"</cfif>>
+											#html.textArea(name="customTemplate",bind=prc.field,label="Custom Template:",class="form-control",title="The custom HTML for this field.",rows=10)#
+										</div>
 
 										<div class="form-actions">
 											<button class="btn" onclick="return to('#event.buildLink(prc.xehFormEditor)#/formID/#prc.field.getForm().getFormID()#')">Cancel</button>
