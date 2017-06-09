@@ -9,7 +9,7 @@ component persistent="true" table="cb_formField"{
 	// Properties
 	property name="fieldOrder" notnull="false" ormtype="integer" default="0" dbdefault="0";
 	property name="name" notnull="true" length="200" default="" index="idx_name";
-	property name="label" notnull="true" length="200" default="" index="idx_label";
+	property name="label" notnull="true" length="500" default="" index="idx_label";
 	property name="typeID" notnull="false" ormtype="integer" default="0" dbdefault="0";
 	property name="isRequired" notnull="true" ormtype="boolean" default="true" dbdefault="1" index="idx_isRequired";
 	property name="maxLength" notnull="false" ormtype="integer" default="50" dbdefault="50";
@@ -64,6 +64,7 @@ component persistent="true" table="cb_formField"{
 
 		// limits
 		name				= left(name,200);
+		label				= left(label,500);
 		helpText			= left(helpText,2000);
 		cssID				= left(cssID,250);
 		cssClass			= left(cssClass,250);
