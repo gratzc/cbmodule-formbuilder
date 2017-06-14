@@ -1,4 +1,13 @@
-﻿<cfoutput>
+﻿<cfscript>
+	function formatHTML(content) {
+		arguments.content = replace(arguments.content, "<", "&lt;", "all");
+		arguments.content = replace(arguments.content, ">", "&gt;", "all");
+
+		return arguments.content;
+	}
+</cfscript>
+
+<cfoutput>
 	#renderView( "viewlets/assets" )#
 	<!--============================Main Column============================-->
 	<div class="row">
@@ -70,7 +79,7 @@
 										</div>
 
 										<div class="form-group"<cfif prc.field.getTypeID() neq 7> style="display: none"</cfif>>
-											#html.textArea(name="customTemplate",bind=prc.field,label="Custom Template:",class="form-control",title="The custom HTML for this field.",rows=10)#
+											#html.textArea(name="customTemplate",value=formatHTML(prc.field.getCustomTemplate()),label="Custom Template:",class="form-control",title="The custom HTML for this field.",rows=10)#
 										</div>
 
 										<div class="form-actions">
