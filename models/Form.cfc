@@ -14,6 +14,7 @@ component persistent="true" table="cb_form"{
 	property name="emailTo" notnull="false" length="500" default="";
 	property name="cssID" notnull="false" length="250" default="";
 	property name="cssClass" notnull="false" length="250" default="";
+	property name="submitButtonClass" notnull="false" length="250" default="btn btn-primary";
 	property name="useCaptcha" notnull="true" ormtype="boolean" default="true" dbdefault="1" index="idx_usecaptcha";
 	property name="createdDate" notnull="true" ormtype="timestamp" update="false" index="idx_createdDate";
 
@@ -55,6 +56,7 @@ component persistent="true" table="cb_form"{
 		emailTo				= left(emailTo,500);
 		cssID				= left(cssID,250);
 		cssClass			= left(cssClass,250);
+		submitButtonClass	= left(submitButtonClass,250);
 
 		// Required
 		if( !len(name) ){ arrayAppend(errors, "Name is required"); }

@@ -59,6 +59,10 @@
 											#html.textField(name="cssClass",bind=prc.form,label="CSS Class:",class="form-control",title="The CSS Class(s) for this form, used to style the form, if you don't know what this is kindly leave it blank")#
 										</div>
 
+										<div class="form-group">
+											#html.textField(name="submitButtonClass",bind=prc.form,label="Submit Button Class:",class="form-control",title="The CSS Class(s) for the submit button of this form")#
+										</div>
+
 										#html.checkbox(name="useCAPTCHA",bind=prc.form,label="Use CAPTCHA:",class="form-control",title="We highly suggest you leave this ON!!!")#
 										<div class="form-actions">
 											<button class="btn" onclick="return to('#event.buildLink(prc.xehForms)#')">Cancel</button>

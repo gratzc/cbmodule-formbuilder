@@ -22,7 +22,7 @@
 					<#settings.htmlHelper.groupWrapper##settings.htmlHelper.groupWrapperClass neq "" ? ' class="#settings.htmlHelper.groupWrapperClass#"' : ''#>
 				</cfif>
 					<label#settings.htmlHelper.labelClass neq "" ? ' class="#settings.htmlHelper.labelClass#"' : ""#>Security Code</label>
-					
+
 					<cfif settings.captchaType eq "CF">
 						#getInstance("modules.contentbox.models.ui.Captcha").display()#<br />
 						#html.textField(name="captchacode",label="Enter the security code shown above:",required="required",size="50",class="form-control")#
@@ -35,7 +35,7 @@
 				</cfif>
 			</cfif>
 
-			#prc.html.submitButton(value='Submit',class="btn btn-primary")#
+			#prc.html.submitButton(value='Submit',class=prc.form.getSubmitButtonClass())#
 		#prc.html.endForm()#
 	</div>
 </cfoutput>
