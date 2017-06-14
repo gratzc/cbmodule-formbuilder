@@ -2,12 +2,12 @@
 	function customField(html) {
 		var h = arguments.html;
 
-		h = replace(h, "{{name}}", field.getName());
-		h = replace(h, "{{label}}", field.getLabel());
-		h = replace(h, "{{required}}", field.getIsRequired());
-		h = replace(h, "{{value}}", field.getDefaultValue());
-		h = replace(h, "{{id}}", field.getCSSID());
-		h = replace(h, "{{class}}", field.getCSSClass());
+		h = replace(h, "{{name}}", field.getName(), "all");
+		h = replace(h, "{{label}}", field.getLabel(), "all");
+		h = replace(h, "{{required}}", field.getIsRequired(), "all");
+		h = replace(h, "{{value}}", field.getDefaultValue(), "all");
+		h = replace(h, "{{id}}", field.getCSSID(), "all");
+		h = replace(h, "{{class}}", field.getCSSClass(), "all");
 
 		return h;
 	}
