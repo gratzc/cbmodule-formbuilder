@@ -29,7 +29,7 @@ component {
 		var errors = formSubmissionService.validateSubmission(event,rc,prc);
 
 		if (arrayLen(errors)) {
-			getInstance("messageBox@cbMessageBox").setMessage("warning","There was a problem submitting your form!");
+			getInstance("messageBox@cbMessageBox").setMessage("warning", arrayToList(errors, "<br>"));
 		} else {
 			var oForm = formService.get( rc.formID );
 			var oSubmission = formSubmissionService.new();

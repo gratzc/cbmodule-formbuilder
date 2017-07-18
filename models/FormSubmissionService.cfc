@@ -6,7 +6,8 @@ component extends="modules.contentbox.modules.contentbox-deps.modules.cborm.mode
 	//DI
 	property name="antiSamy" inject="antisamy@cbantisamy";
 	property name="captcha" inject="modules.contentbox.models.ui.Captcha";
-	property name="settingService" 	inject="settingService@cb";
+	property name="settingService" inject="settingService@cb";
+	property name="formService" inject="entityService:Form";
 	/**
 	* Constructor
 	*/
@@ -54,32 +55,41 @@ component extends="modules.contentbox.modules.contentbox-deps.modules.cborm.mode
 		}
 
 		// Validate incoming data
-		errors = [];
+		var oForm = formService.get(event.getValue("formID", 0));
 
-		// CAPTCHA validation
-		if( event.valueExists("captchacode") ) {
-			if (!captcha.validate( rc.captchacode )) {
-				arrayAppend(errors, "Invalid security code. Please try again.");
-			}
-		} else if (structKeyExists(form, "g-recaptcha-response")) {
-			var recaptcha = form["g-recaptcha-response"];
-
-			if (len(recaptcha)) {
-				var googleUrl = "https://www.google.com/recaptcha/api/siteverify";
-				var ipaddr = cgi.remote_addr;
-				var request_url = googleUrl & "?secret=" & settings.reCAPTCHA.privateKey & "&response=" & recaptcha & "&remoteip" & ipaddr;
-
-				var httpService = new http(method="GET", charset="utf-8", url=request_url); 
-				var apiCall = httpService.send().getPrefix();
-
-				var response = deserializeJSON(apiCall.filecontent);
-
-				if (!response.success) {
-					arrayAppend(errors, "Invalid security code. Please try again.");
+		if (!isNull(oForm) and !isNull(oForm.getFormId())) {
+			for (var oField in oForm.getFields()) {
+				if (!(structKeyExists(rc, oField.getName()) and rc[oField.getName()] neq "")) {
+					arrayAppend(errors, oField.getLabel() & " is required.");
 				}
-			} else {
+			}
+
+			if (oForm.getUseCaptcha()) {
+				// CAPTCHA validation
+				if( event.valueExists("captchacode") ) {
+					if (captcha.validate( rc.captchacode )) { return errors; }
+				} else if (structKeyExists(rc, "g-recaptcha-response")) {
+					var recaptcha = rc["g-recaptcha-response"];
+
+					if (len(recaptcha)) {
+						var googleUrl = "https://www.google.com/recaptcha/api/siteverify";
+						var ipaddr = cgi.remote_addr;
+						var request_url = googleUrl & "?secret=" & settings.reCAPTCHA.privateKey & "&response=" & recaptcha & "&remoteip" & ipaddr;
+
+						var httpService = new http(method="GET", charset="utf-8", url=request_url);
+						var apiCall = httpService.send().getPrefix();
+
+						var response = deserializeJSON(apiCall.filecontent);
+
+
+						if (response.success) { return errors; }
+					}
+				}
+
 				arrayAppend(errors, "Invalid security code. Please try again.");
 			}
+		} else {
+			arrayAppend(errors, "Invalid form.");
 		}
 
 		return errors;
