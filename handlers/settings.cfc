@@ -19,12 +19,6 @@ component extends="base" {
 		var oSetting = settingService.findWhere( { name="form_builder" } );
 
 		// Get Form Builder settings from user input
-		if(structKeyExists(rc,"CAPTCHAType")) {
-			incomingSetting = serializeJSON({"CAPTCHAType"=rc.CAPTCHAType});
-			newSetting = deserializeJSON(incomingSetting);
-			structAppend(newSettings,newSetting);
-		}
-
 		if(structKeyExists(rc,"publicKey")) {
 			incomingSetting = serializeJSON({"reCAPTCHA"={"publicKey"=rc.publicKey, "privateKey"=rc.privateKey}});
 			newSetting = deserializeJSON(incomingSetting);

@@ -23,13 +23,8 @@
 				</cfif>
 					<label#settings.htmlHelper.labelClass neq "" ? ' class="#settings.htmlHelper.labelClass#"' : ""#>Security Code</label>
 
-					<cfif settings.captchaType eq "CF">
-						#getInstance("modules.contentbox.models.ui.Captcha").display()#<br />
-						#html.textField(name="captchacode",label="Enter the security code shown above:",required="required",size="50",class="form-control")#
-					<cfelseif settings.captchaType eq "reCAPTCHA">
-						<script src="https://www.google.com/recaptcha/api.js"></script>
-						<div class="g-recaptcha" data-sitekey="#settings.reCAPTCHA.publicKey#"></div>
-					</cfif>
+					<script src="https://www.google.com/recaptcha/api.js"></script>
+					<div class="g-recaptcha" data-sitekey="#settings.reCAPTCHA.publicKey#"></div>
 				<cfif settings.htmlHelper.groupWrapper neq "">
 					</#settings.htmlHelper.groupWrapper#>
 				</cfif>

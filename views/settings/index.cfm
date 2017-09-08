@@ -25,15 +25,6 @@
 								#html.startForm(action="#prc.xehSettingsSave#",name="settingsForm")#
 									#html.startFieldset(legend="CAPTCHA")#
 										<div class="form-group">
-											#html.label(class="control-label", field="CAPTCHAType", content="Type:")#
-
-											<div class="controls">
-												#html.radioButton(name="CAPTCHAType", checked=(prc.settings.CAPTCHAType eq 'CF'), value="CF")# ColdFusion
-												#html.radioButton(name="CAPTCHAType", checked=(prc.settings.CAPTCHAType eq 'reCAPTCHA'), value="reCAPTCHA")# reCAPTCHA
-											</div>
-										</div>
-
-										<div class="form-group">
 											#html.label(field="publicKey", content="reCAPTCHA Public Key:")#
 											#html.textField(name="publicKey", value=prc.settings.reCAPTCHA.publicKey, class="form-control")#
 										</div>

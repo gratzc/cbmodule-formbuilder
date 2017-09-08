@@ -5,7 +5,6 @@ component extends="modules.contentbox.modules.contentbox-deps.modules.cborm.mode
 
 	//DI
 	property name="antiSamy" inject="antisamy@cbantisamy";
-	property name="captcha" inject="modules.contentbox.models.ui.Captcha";
 	property name="settingService" inject="settingService@cb";
 	property name="formService" inject="entityService:Form";
 	/**
@@ -66,9 +65,7 @@ component extends="modules.contentbox.modules.contentbox-deps.modules.cborm.mode
 
 			if (oForm.getUseCaptcha()) {
 				// CAPTCHA validation
-				if( event.valueExists("captchacode") ) {
-					if (captcha.validate( rc.captchacode )) { return errors; }
-				} else if (structKeyExists(rc, "g-recaptcha-response")) {
+				if (structKeyExists(rc, "g-recaptcha-response")) {
 					var recaptcha = rc["g-recaptcha-response"];
 
 					if (len(recaptcha)) {

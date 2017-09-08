@@ -1,5 +1,5 @@
 ﻿<cfoutput>
-	<cfset keysToDelete = ["_returnTo","formID","FIELDNAMES","captchacode","g-recaptcha-response"] />
+	<cfset keysToDelete = ["_returnTo","formID","FIELDNAMES","g-recaptcha-response"] />
 	<cfloop array="#keysToDelete#" index="key">
 		<cfset structDelete(prc.formData,key) />
 	</cfloop>
