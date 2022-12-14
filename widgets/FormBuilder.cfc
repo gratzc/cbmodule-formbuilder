@@ -9,13 +9,13 @@ component extends="contentbox.models.ui.BaseWidget" singleton{
 
 		// Widget Properties
 		setName("FormBuilder");
-		setVersion("2.0");
+		setVersion("3.0");
 		setDescription("A widget that renders a form built in the FormBuilder Module");
 		setAuthor("Computer Know How, LLC");
 		setAuthorURL("www.compknowhow.com");
 		setForgeBoxSlug("cbwidget-formbuilder");
 		setIcon("file-text-o");
-		setCategory("Content")
+		setCategory("Content");
 
 		return this;
 	}
@@ -26,6 +26,7 @@ component extends="contentbox.models.ui.BaseWidget" singleton{
 	* @defaultValue.hint The string to show if the form slug does not exist
 	*/
 	any function renderIt(required string slug, string defaultValue){
+		
 		if (isDefined("event") and getMetaData(event).getName() eq "java.lang.String" and find("contentbox-admin", event)) {
 			return "Form preview is disabled";
 		}

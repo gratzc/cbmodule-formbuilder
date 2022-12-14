@@ -11,10 +11,10 @@
 				<cfset args = {field=field} />
 
 				<!--- TODO: Need to handle the selectValue for selects --->
-				#renderview(view="viewlets/fields/#field.getTypeView()#",module="contentbox-formbuilder",args=args)#
+				#view(view="viewlets/fields/#field.getTypeView()#",module="contentbox-formbuilder",args=args)#
 			</cfloop>
 
-			<!--- captcah --->
+			<!--- captcha --->
 			<cfif prc.form.getUseCaptcha()>
 				<cfset settings = deserializeJSON(cb.setting('form_builder'))>
 

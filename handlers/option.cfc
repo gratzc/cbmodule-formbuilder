@@ -47,7 +47,7 @@ component extends="base" {
 		}
 
 		// relocate back to editor
-		setNextEvent(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
+		relocate(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
 	}
 
 	function remove(event,rc,prc){
@@ -55,14 +55,14 @@ component extends="base" {
 
 		if( isNull(oOption) ){
 			getInstance("messageBox@cbMessageBox").setMessage("warning","Invalid option detected!");
-			setNextEvent(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
+			relocate(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
 		}
 		// remove
 		optionService.delete( oOption );
 		// message
 		getInstance("messageBox@cbMessageBox").setMessage("info","Option removed!");
 		// redirect
-		setNextEvent(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
+		relocate(event=prc.xehFieldEditor,queryString="fieldID=#rc.fieldID###options");
 	}
 
 	// change order for all rules

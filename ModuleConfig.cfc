@@ -54,7 +54,7 @@ component {
 		// ContentBox loading
 		if( structKeyExists( controller.getSetting("modules"), "contentbox" ) ){
 			// Let's add ourselves to the main menu in the Modules section
-			var menuService = controller.getWireBox().getInstance("AdminMenuService@cb");
+			var menuService = controller.getWireBox().getInstance("AdminMenuService@contentbox");
 			// Add Menu Contribution
 			menuService.addSubMenu(topMenu=menuService.MODULES,name="cbFormBuilder",label="Form Builder",href="#menuService.buildModuleLink('cbFormBuilder','form.index')#");
 		}
@@ -64,7 +64,7 @@ component {
 	* Fired when the module is activated
 	*/
 	function onActivate(){
-		var settingService = controller.getWireBox().getInstance("SettingService@cb");
+		var settingService = controller.getWireBox().getInstance("SettingService@contentbox");
 		// store default settings
 		var findArgs = {name="form_builder"};
 		var setting = settingService.findWhere(criteria=findArgs);
@@ -85,7 +85,7 @@ component {
 		// ContentBox unloading
 		if( structKeyExists( controller.getSetting("modules"), "contentbox" ) ){
 			// Let's remove ourselves to the main menu in the Modules section
-			var menuService = controller.getWireBox().getInstance("AdminMenuService@cb");
+			var menuService = controller.getWireBox().getInstance("AdminMenuService@contentbox");
 			// Remove Menu Contribution
 			menuService.removeSubMenu(topMenu=menuService.MODULES,name="cbFormBuilder");
 		}
@@ -95,7 +95,7 @@ component {
 	* Fired when the module is deactivated by ContentBox Only
 	*/
 	function onDeactivate(){
-		var settingService = controller.getWireBox().getInstance("SettingService@cb");
+		var settingService = controller.getWireBox().getInstance("SettingService@contentbox");
 		var args = {name="form_builder"};
 		var setting = settingService.findWhere(criteria=args);
 		if( !isNull(setting) ){

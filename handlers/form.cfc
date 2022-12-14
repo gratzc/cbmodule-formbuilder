@@ -68,12 +68,12 @@ component extends="base" {
 			formService.save( oForm );
 			// Message
 			getInstance("messageBox@cbMessageBox").info("Form saved! Now you are happy!");
-			setNextEvent(event=prc.xehFormEditor,queryString="formID=#oForm.getFormID()#");
+			relocate(event=prc.xehFormEditor,queryString="formID=#oForm.getFormID()#");
 		}
 		else{
 			flash.persistRC(exclude="event");
 			getInstance("messageBox@cbMessageBox").warn(messageArray=errors);
-			setNextEvent(event=prc.xehFormEditor,queryString="formID=#oForm.getFormID()#");
+			relocate(event=prc.xehFormEditor,queryString="formID=#oForm.getFormID()#");
 		}
 
 	}
@@ -84,14 +84,14 @@ component extends="base" {
 
 		if( isNull(oForm) ){
 			getInstance("messageBox@cbMessageBox").setMessage("warning","Invalid Form detected!");
-			setNextEvent( prc.xehForms );
+			relocate( prc.xehForms );
 		}
 		// remove
 		formService.delete( oForm );
 		// message
 		getInstance("messageBox@cbMessageBox").setMessage("info","Form Removed!");
 		// redirect
-		setNextEvent(prc.xehForms);
+		relocate(prc.xehForms);
 	}
 
 
@@ -128,14 +128,14 @@ component extends="base" {
 
 		if( isNull(oSubmission) ){
 			getInstance("messageBox@cbMessageBox").setMessage("warning","Invalid Submission detected!");
-			setNextEvent( prc.xehSubmissionReport,"formID=#rc.formID#" );
+			relocate( prc.xehSubmissionReport,"formID=#rc.formID#" );
 		}
 		// remove
 		formService.delete( oSubmission );
 		// message
 		getInstance("messageBox@cbMessageBox").setMessage("info","Submission Removed!");
 		// redirect
-		setNextEvent(event=prc.xehSubmissionReport,queryString="formID=#rc.formID#");
+		relocate(event=prc.xehSubmissionReport,queryString="formID=#rc.formID#");
 	}
 
 	/**

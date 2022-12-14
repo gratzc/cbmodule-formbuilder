@@ -20,7 +20,7 @@ component{
 
 		// if data isn't setup, redirect user
 		if( !FormSubmissionService.isDataSetup() && event.getCurrentEvent() NEQ "contentbox-formbuilder:form.noDataSetup") {
-			setNextEvent("cbFormBuilder.form.noDataSetup");
+			relocate("cbFormBuilder.form.noDataSetup");
 		}
 
 		// exit points
@@ -36,7 +36,7 @@ component{
 		//check login and redirect is needed.
 		if(!prc.oCurrentAuthor.isLoaded()){
 			getInstance("messageBox@cbMessageBox").setMessage("warning","Please login!");
-			setNextEvent(prc.xehLogin);
+			relocate(prc.xehLogin);
 		}
 
 		// use the CB admin layout
