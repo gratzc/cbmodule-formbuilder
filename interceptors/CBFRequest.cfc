@@ -13,6 +13,7 @@ component extends="coldbox.system.Interceptor"{
 	property name="securityService"		inject="id:securityService@cb";
 	property name="settingService"		inject="id:settingService@cb";
 	property name="adminMenuService"	inject="id:adminMenuService@cb";
+	property name="siteService" 		inject="siteService@contentbox";
 
 	/**
 	* Fired on contentbox requests
@@ -20,7 +21,7 @@ component extends="coldbox.system.Interceptor"{
 	function preProcess( event, interceptData, rc, prc ) eventPattern="^contentbox-formbuilder" {
 		// Verify ContentBox installer has been ran?
 		if( !settingService.isCBReady() ){
-			setNextEvent( 'cbInstaller' );
+			relocate( 'cbInstaller' );
 		}
 
 		/************************************** SETUP CONTEXT REQUEST *********************************************/
@@ -28,7 +29,7 @@ component extends="coldbox.system.Interceptor"{
 		// store module root
 		prc.cbRoot = getContextRoot() & event.getModuleRoot( "contentbox-admin" );
 		// cb helper
-		prc.CBHelper = getModel( "CBHelper@cb" );
+		prc.CBHelper = getInstance( "CBHelper@cb" );
 		// store admin module entry point
 		prc.cbAdminEntryPoint = getModuleConfig( "contentbox-admin" ).entryPoint;
 		// store site entry point
@@ -49,11 +50,16 @@ component extends="coldbox.system.Interceptor"{
 		if( prc.oCurrentAuthor.getPreference( "sidemenuCollapse", false ) == "true" ){
 			prc.sideMenuClass = "sidebar-mini";
 		}
+		
+		// Place all sites in prc for usage by the UI switcher
+		prc.allSites         = variables.siteService.getAllFlat( isActive: true );
+		// Get the current working site object on PRC
+		prc.oCurrentSite     = variables.siteService.getCurrentWorkingSite();
 
 		/************************************** FORCE SSL *********************************************/
 
 		if( prc.cbSettings.cb_admin_ssl and !event.isSSL() ){
-			setNextEvent( event=event.getCurrentRoutedURL(), ssl=true );
+			relocate( event=event.getCurrentRoutedURL(), ssl=true );
 		}
 
 		/************************************** FORCE PASSWORD RESET *********************************************/
@@ -67,7 +73,7 @@ component extends="coldbox.system.Interceptor"{
 			getInstance( "messagebox@cbMessagebox" ).info(
 				prc.CBHelper.r( "messages.password_reset_detected@security" )
 			);
-			setNextEvent(
+			relocate(
 				event 		= "#prc.cbAdminEntryPoint#.security.verifyReset",
 				queryString = "token=#token#"
 			);
@@ -83,6 +89,7 @@ component extends="coldbox.system.Interceptor"{
 
 		// Entries Tab
 		prc.xehEntries					= "#prc.cbAdminEntryPoint#.entries";
+		prc.xehEntriesEditor            = "#prc.cbAdminEntryPoint#.entries.editor";
 		prc.xehBlogEditor 				= "#prc.cbAdminEntryPoint#.entries.editor";
 		prc.xehCategories				= "#prc.cbAdminEntryPoint#.categories";
 
@@ -124,6 +131,7 @@ component extends="coldbox.system.Interceptor"{
 		prc.xehSecurityRules			= "#prc.cbAdminEntryPoint#.securityrules";
 		prc.xehRawSettings				= "#prc.cbAdminEntryPoint#.settings.raw";
 		prc.xehAutoUpdater	    		= "#prc.cbAdminEntryPoint#.autoupdates";
+		prc.xehChangeSite            	= "#prc.cbAdminEntryPoint#.sites.changeSite";
 		// Stats
 		prc.xehSubscribers 				= "#prc.cbAdminEntryPoint#.subscribers";
 		// Login/Logout

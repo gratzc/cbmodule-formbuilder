@@ -43,7 +43,7 @@ component {
 			//set any emails if there are any
 			oSubmission.sendSubmissionEmails();
 		}
-		setNextEvent(url=rc._returnTo);
+		relocate(url=rc._returnTo);
 	}
 
 }

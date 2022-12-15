@@ -60,7 +60,7 @@ component extends="base" {
 		}
 		flash.persistRC(exclude="event");
 		// relocate back to editor
-		setNextEvent(event=prc.xehFormEditor,queryString="formID=#oField.getForm().getFormID()#/##formFields");
+		relocate(event=prc.xehFormEditor,queryString="formID=#oField.getForm().getFormID()#/##formFields");
 	}
 
 	function remove(event,rc,prc){
@@ -68,7 +68,7 @@ component extends="base" {
 
 		if( isNull(oField) ){
 			getInstance("messageBox@cbMessageBox").setMessage("warning","Invalid Field detected!");
-			setNextEvent( prc.xehFields );
+			relocate( prc.xehFields );
 		}
 		// remove
 		fieldService.delete( oField );
@@ -76,7 +76,7 @@ component extends="base" {
 		getInstance("messageBox@cbMessageBox").setMessage("info","Field Removed!");
 
 		// relocate back to editor
-		setNextEvent(event=prc.xehFormEditor,queryString="formID=#rc.formID#/##formFields");
+		relocate(event=prc.xehFormEditor,queryString="formID=#rc.formID#/##formFields");
 	}
 
 	// change order for all rules

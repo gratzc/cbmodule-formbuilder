@@ -1,7 +1,7 @@
 ﻿
 <cfcomponent hint="A cool utility that helps you when working with HTML, from creating doc types, to managing your js/css assets, to rendering tables and lists from data"
 			 output="false"
-			 extends="coldbox.system.core.dynamic.HTMLHelper"
+			 extends="coldbox.system.modules.HTMLHelper.models.HTMLHelper"
 			 singleton>
 
 <!------------------------------------------- CONSTRUCTOR ------------------------------------------->
@@ -622,7 +622,7 @@
 			}
 
 			// create label tag
-			if( len(arguments.label) ){
+			if( len(arguments.content) ){
 				buffer.append("<" & arguments.label);
 				if( len(arguments.labelclass) ){ buffer.append(' class="' & arguments.labelClass & '"'); }
 				flattenAttributes(arguments,"content,field,wrapper,label,labelclass",buffer).append(">#arguments.content#</" & arguments.label & ">");
