@@ -19,6 +19,7 @@ Use the Form Builder menu link to go to the form builder admin section.  In the 
 
 Change Log
 -----------------
+* Version 3.0  - Updated for ContentBox 5.3
 * Version 2.0  - Updated for ContentBox 3
 * Version 1.5  - Supports ContentBox version 1.5+, Updated UI, Bug Fixes, Admin Validation
 * Version 1.0  - Supports up to ContentBox version 1.2, Bug Fixes, Integrated widget, Style updates, reCapcha support
